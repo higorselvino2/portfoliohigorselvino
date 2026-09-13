@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#111318" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111b2e'/%3E%3Cpath d='M17 15h18c9 0 15 5 15 13 0 6-3 10-9 12l10 9H39l-8-8h-4v8H17V15zm10 9v9h8c3 0 5-2 5-5s-2-4-5-4h-8z' fill='%2394f0ff'/%3E%3C/svg%3E" />
+  <title>Revision Room · Interactive Product Concept</title>
+  <meta name="description" content="A private interactive prototype for a synthetic creative review and approval case study." />
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="prototype-note" role="note">
+    <span class="eyebrow">CONCEPT STUDY</span>
+    Synthetic research · No real participants · Validation pending
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#dashboard" aria-label="Revision Room home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-copy"><b>Revision</b><b>Room</b><small>Creative proofing / 01</small></span>
+      </a>
+
+      <nav class="nav-list">
+        <button class="nav-item is-active" data-view="dashboard" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+          Projects
+        </button>
+        <button class="nav-item" data-view="review">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 3z"/></svg>
+          Review
+          <span class="nav-count">3</span>
+        </button>
+        <button class="nav-item" data-view="compare">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/></svg>
+          Versions
+        </button>
+        <button class="nav-item" data-view="delivery">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 19h14"/></svg>
+          Delivery
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <button class="nav-item" data-view="evidence">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h4"/></svg>
+        Case evidence
+      </button>
+      <button class="nav-item" data-view="system">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h16M17 10v4"/></svg>
+        UI system
+      </button>
+      <div class="profile">
+        <span class="avatar">HS</span>
+        <span><strong>Higor Selvino</strong><small>Creator workspace</small></span>
+      </div>
+    </aside>
+
+    <main id="main" class="main">
+      <header class="topbar">
+        <button class="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+        <div class="breadcrumbs"><span>Projects</span><b>/</b><strong id="crumb">Overview</strong></div>
+        <div class="top-actions">
+          <span class="presence"><i></i> 3 reviewers online</span>
+          <button class="icon-button" aria-label="Open notifications">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h12l-1.5-2V10a4.5 4.5 0 0 0-9 0v5zM10 20h4"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="view is-active" id="view-dashboard" data-title="Overview">
+        <div class="page-head">
+          <div><p class="kicker">Thursday, 10 September</p><h1>Good afternoon, Higor.</h1><p>Three projects need your attention. One is ready for approval.</p></div>
+          <button class="button primary" data-open-new>New project</button>
+        </div>
+
+        <div class="stat-grid" aria-label="Project status summary">
+          <article class="stat-card"><span class="stat-icon purple">04</span><div><strong>Active projects</strong><p>Across 3 client teams</p></div></article>
+          <article class="stat-card"><span class="stat-icon amber">07</span><div><strong>Open comments</strong><p>3 need clarification</p></div></article>
+          <article class="stat-card"><span class="stat-icon cyan">02</span><div><strong>Awaiting review</strong><p>Latest update 14:32</p></div></article>
+          <article class="stat-card"><span class="stat-icon green">01</span><div><strong>Ready to deliver</strong><p>Approved today</p></div></article>
+        </div>
+
+        <div class="section-head"><div><span class="eyebrow">PRIORITY</span><h2>Continue where the decision is</h2></div><button class="button quiet">View all projects</button></div>
+        <article class="focus-project">
+          <figure class="poster-thumb">
+            <img src="./assets/spring-arts-v03-master-portrait.png" width="1122" height="1402" loading="eager" decoding="async" alt="Spring Arts Festival Version 03 poster with bold navy typography, geometric blue and cyan forms, and a blue architectural photograph" />
+            <figcaption><span>V03</span><span>Key visual · portrait</span></figcaption>
+          </figure>
+          <div class="focus-copy">
+            <div class="status-row"><span class="badge review">In review</span><span class="meta">UPDATED 14:32</span></div>
+            <h2>Spring Arts Festival</h2>
+            <p>Campaign key visual and social rollout</p>
+            <dl class="project-facts"><div><dt>Current version</dt><dd>V03</dd></div><div><dt>Open feedback</dt><dd>3 comments</dd></div><div><dt>Decision owner</dt><dd>Sofia M.</dd></div><div><dt>Due</dt><dd>Tomorrow</dd></div></dl>
+            <div class="change-summary"><span class="meta">WHAT CHANGED</span><p>Raised event hierarchy, simplified sponsor area, increased contrast for outdoor formats.</p></div>
+            <div class="button-row"><button class="button primary" data-go="review">Open review</button><button class="button secondary" data-go="compare">Compare V02 → V03</button></div>
+          </div>
+          <div class="review-stack">
+            <span class="meta">REVIEWERS</span>
+            <div class="avatar-stack"><span class="avatar gold">SM</span><span class="avatar mint">DL</span><span class="avatar blue">EK</span></div>
+            <p><strong>2 of 3</strong> viewed V03</p>
+            <div class="progress"><i style="width:66%"></i></div>
+          </div>
+        </article>
+
+        <div class="lower-grid">
+          <section class="panel"><div class="panel-head"><h3>Recent activity</h3><button class="text-button">All activity</button></div><ul class="activity-list"><li><span class="activity-dot purple"></span><div><strong>Sofia opened Version 03</strong><small>Spring Arts Festival · 4 min ago</small></div></li><li><span class="activity-dot cyan"></span><div><strong>Daniel replied to comment 02</strong><small>Editorial annual report · 28 min ago</small></div></li><li><span class="activity-dot green"></span><div><strong>Lea approved final artwork</strong><small>Music for Everyone · 1 hr ago</small></div></li></ul></section>
+          <section class="panel next-step"><span class="eyebrow">NEXT DECISION</span><h3>Request approval when all three comments are resolved.</h3><p>The approver will see the change summary and compare V02 with V03 before confirming.</p><button class="button secondary" data-go="review">Resolve feedback</button></section>
+        </div>
+      </section>
+
+      <section class="view review-view" id="view-review" data-title="Review V03">
+        <div class="review-toolbar">
+          <div><span class="badge review">In review</span><h1>Spring Arts Festival</h1></div>
+          <div class="version-selector" aria-label="Version selection"><button>V02</button><button class="is-current">V03 <small>Current</small></button></div>
+          <div class="button-row"><button class="button secondary" data-go="compare">Compare</button><button class="button primary" id="requestApproval">Request approval</button></div>
+        </div>
+        <div class="review-layout">
+          <aside class="mini-rail" aria-label="Project sections"><button class="is-active">01</button><button>02</button><button>03</button><span></span><button>+</button></aside>
+          <div class="canvas-area">
+            <div class="canvas-controls"><span class="meta">ARTBOARD 01 · POSTER · 100%</span><div><button aria-label="Zoom out">−</button><button aria-label="Fit canvas">Fit</button><button aria-label="Zoom in">+</button></div></div>
+            <figure class="artboard" aria-label="Spring Arts Festival Version 03 poster with contextual review pins">
+              <img src="./assets/spring-arts-v03-master-portrait.png" width="1122" height="1402" loading="eager" decoding="async" alt="Spring Arts Festival Version 03 poster" />
+              <button class="pin pin-1 is-active" data-comment="1" aria-label="Open comment 1">1</button>
+              <button class="pin pin-2" data-comment="2" aria-label="Open comment 2">2</button>
+              <button class="pin pin-3" data-comment="3" aria-label="Open comment 3">3</button>
+            </figure>
+            <div class="canvas-caption"><span class="meta">V03 · CURRENT</span><p>Raised hierarchy and simplified sponsor area.</p></div>
+          </div>
+          <aside class="comments-panel">
+            <div class="comments-head"><div><span class="eyebrow">FEEDBACK</span><h2>3 open comments</h2></div><button class="filter-button">Open only</button></div>
+            <div class="comment-list">
+              <article class="comment-card is-active" data-card="1"><div class="comment-meta"><span class="avatar gold">SM</span><div><strong>Sofia M.</strong><small>Approver · 16 min ago</small></div><span class="comment-number">01</span></div><p>Could the date remain legible at mobile size without competing with the title?</p><div class="comment-actions"><button data-resolve="1">Mark resolved</button><button>Reply</button></div></article>
+              <article class="comment-card" data-card="2"><div class="comment-meta"><span class="avatar mint">DL</span><div><strong>Daniel L.</strong><small>Reviewer · 34 min ago</small></div><span class="comment-number">02</span></div><p>The cyan circle feels close to the event category. Is that intentional?</p><div class="comment-actions"><button data-resolve="2">Mark resolved</button><button>Reply</button></div></article>
+              <article class="comment-card" data-card="3"><div class="comment-meta"><span class="avatar blue">EK</span><div><strong>Elena K.</strong><small>Reviewer · 51 min ago</small></div><span class="comment-number">03</span></div><p>Please confirm the sponsor safe area for the outdoor crop.</p><div class="comment-actions"><button data-resolve="3">Mark resolved</button><button>Reply</button></div></article>
+            </div>
+            <form class="composer" id="commentForm"><label for="commentInput">Add contextual comment</label><textarea id="commentInput" placeholder="Write a clear, actionable note…"></textarea><div><span class="meta">ATTACHED TO V03</span><button class="button primary small" type="submit">Add comment</button></div></form>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-compare" data-title="Compare versions">
+        <div class="page-head compact"><div><p class="kicker">VERSION HISTORY</p><h1>Compare V02 with V03</h1><p>Review the change summary before making a decision.</p></div><div class="button-row"><button class="button secondary" data-go="review">Back to comments</button><button class="button primary" data-open-approval>Approve V03</button></div></div>
+        <div class="compare-summary"><span class="meta">CHANGE SUMMARY · V03</span><ul><li>Raised event title hierarchy</li><li>Moved date outside the high-detail area</li><li>Simplified sponsor-safe zone</li></ul></div>
+        <section class="comparison-stage" aria-labelledby="comparison-title">
+          <div class="comparison-header">
+            <div><span class="meta">V02 · SEP 08 · 17:10</span><strong id="comparison-title">Before feedback</strong></div>
+            <p>Drag the control to inspect the same artwork before and after the review decisions.</p>
+            <div><span class="meta">V03 · SEP 10 · 14:32</span><strong>Current version</strong></div>
+          </div>
+          <div class="comparison-canvas" id="comparisonCanvas" style="--split:50%">
+            <img class="comparison-before" src="./assets/spring-arts-v02-master-portrait.png" width="1122" height="1402" loading="eager" decoding="async" alt="Spring Arts Festival Version 02 before feedback was resolved" />
+            <div class="comparison-after" aria-hidden="true"><img src="./assets/spring-arts-v03-master-portrait.png" width="1122" height="1402" loading="eager" decoding="async" alt="" /></div>
+            <div class="comparison-divider" aria-hidden="true"><span>↔</span></div>
+          </div>
+          <label class="comparison-control" for="comparisonRange"><span>Show V02</span><input id="comparisonRange" type="range" min="0" max="100" value="50" aria-label="Reveal Version 03 over Version 02" /><span>Show V03</span></label>
+        </section>
+        <div class="compare-footer"><span class="meta">DECISION RECORD</span><p>No approval has been recorded for V03 yet. Three comments remain open.</p><button class="button primary" data-open-approval>Review and approve</button></div>
+      </section>
+
+      <section class="view" id="view-delivery" data-title="Approval & delivery">
+        <div class="page-head compact"><div><p class="kicker">FINAL HANDOFF</p><h1>Approval and delivery</h1><p>The final package is separated from review exports and linked to the approved version.</p></div><span class="badge" id="deliveryStatus">Awaiting approval</span></div>
+        <div class="delivery-layout">
+          <section class="approval-card"><div class="approval-icon" aria-hidden="true">✓</div><span class="meta">VERSION 03</span><h2 id="approvalHeading">Ready for a deliberate decision</h2><p id="approvalCopy">Approval records the exact version, approver, time, and optional note. Open comments stay visible.</p><dl><div><dt>Approver</dt><dd>Sofia M.</dd></div><div><dt>Open feedback</dt><dd id="openCount">3 comments</dd></div><div><dt>Requested</dt><dd>Today · 15:04</dd></div></dl><button class="button primary wide" data-open-approval>Approve Version 03</button></section>
+          <section class="delivery-panel" id="deliveryPanel" aria-disabled="true"><div class="panel-head"><div><span class="eyebrow">DELIVERY</span><h2>Final package</h2></div><span class="lock-label">Locked</span></div><p>Files become available after approval. Their metadata remains tied to Version 03.</p><div class="file-row"><span class="file-icon">PDF</span><div><strong>Master artwork</strong><small>PDF/X-4 · CMYK · 48.2 MB</small></div><button disabled>Download</button></div><div class="file-row"><span class="file-icon">ZIP</span><div><strong>Social exports</strong><small>12 files · RGB · 26.8 MB</small></div><button disabled>Download</button></div><div class="file-row"><span class="file-icon">TXT</span><div><strong>Usage notes</strong><small>Format guide · 24 KB</small></div><button disabled>Download</button></div></section>
+        </div>
+      </section>
+
+      <section class="view evidence" id="view-evidence" data-title="Case evidence">
+        <div class="page-head compact"><div><p class="kicker">CASE STUDY EVIDENCE</p><h1>What is real, and what is a hypothesis</h1><p>This board keeps the concept transparent enough to discuss in an interview.</p></div><span class="badge attention">Synthetic research</span></div>
+        <div class="integrity-card"><span class="eyebrow">INTEGRITY NOTE</span><h2>No real participants were interviewed.</h2><p>Eight composite interviews were created to structure plausible collaboration problems. They are a hypothesis generator, not user evidence. A real validation round is the next step.</p></div>
+        <div class="evidence-grid">
+          <article class="evidence-card"><span class="metric">6/8</span><h3>Fragmented workflow</h3><p>Synthetic participants used three or more tools in one review cycle.</p></article>
+          <article class="evidence-card"><span class="metric">5/8</span><h3>Version uncertainty</h3><p>They described difficulty identifying the latest file.</p></article>
+          <article class="evidence-card"><span class="metric">6/8</span><h3>Contextless feedback</h3><p>Comments arrived without an exact visual location.</p></article>
+          <article class="evidence-card"><span class="metric">5/8</span><h3>Ambiguous approval</h3><p>Conversational language was mistaken for formal approval.</p></article>
+        </div>
+        <div class="decision-grid">
+          <section class="panel"><span class="eyebrow">OPPORTUNITY</span><h2>Visual precision without professional-tool complexity.</h2><p>Make it obvious which version is current, where feedback belongs, who can approve, and what becomes deliverable.</p></section>
+          <section class="panel"><span class="eyebrow">MVP</span><ol><li>Versioned review</li><li>Pinned annotations</li><li>Resolved/open state</li><li>Version comparison</li><li>Explicit approval</li><li>Final package</li></ol></section>
+          <section class="panel"><span class="eyebrow">NOT IN MVP</span><ul><li>Payments and contracts</li><li>Chat and video</li><li>Creative-file editing</li><li>AI-generated critique</li></ul></section>
+        </div>
+        <section class="flow-panel"><span class="eyebrow">PRIMARY FLOW</span><div class="flow"><span>Upload V03</span><i>→</i><span>Review pins</span><i>→</i><span>Resolve feedback</span><i>→</i><span>Compare versions</span><i>→</i><span>Approve</span><i>→</i><span>Deliver</span></div></section>
+      </section>
+
+      <section class="view system-view" id="view-system" data-title="UI system">
+        <div class="page-head compact"><div><p class="kicker">REVISION ROOM · V1</p><h1>Interface foundations and components</h1><p>A compact, accessible system for creative feedback, explicit decisions, and version-safe delivery.</p></div><span class="badge review">Product UI</span></div>
+
+        <div class="system-grid">
+          <section class="system-card type-card">
+            <div class="system-heading"><span class="eyebrow">TYPE</span><strong>System sans + monospaced metadata</strong></div>
+            <div class="type-sample display-sample">Make the decision visible.</div>
+            <div class="type-sample h1-sample">Review work with context</div>
+            <div class="type-sample h2-sample">Current version and next action</div>
+            <div class="type-sample body-sample">Humanist clarity for dense product workflows, paired with precise monospaced metadata.</div>
+            <div class="type-sample meta">VERSION 03 · UPDATED 14:32 · 3 OPEN COMMENTS</div>
+          </section>
+
+          <section class="system-card color-card">
+            <div class="system-heading"><span class="eyebrow">COLOR</span><strong>Quiet workspace, artwork-led accents</strong></div>
+            <div class="swatch-grid">
+              <div><span style="--swatch:#111318"></span><b>Studio ink</b><small>#111318</small></div>
+              <div><span style="--swatch:#686d7b"></span><b>Slate</b><small>#686D7B</small></div>
+              <div><span style="--swatch:#f5f6f8"></span><b>Canvas</b><small>#F5F6F8</small></div>
+              <div><span style="--swatch:#3e5bff"></span><b>Cobalt</b><small>#3E5BFF</small></div>
+              <div><span style="--swatch:#11beca"></span><b>Cyan</b><small>#11BECA</small></div>
+              <div><span style="--swatch:#21855b"></span><b>Success</b><small>#21855B</small></div>
+              <div><span style="--swatch:#b56b18"></span><b>Attention</b><small>#B56B18</small></div>
+              <div><span style="--swatch:#b84b55"></span><b>Critical</b><small>#B84B55</small></div>
+            </div>
+          </section>
+
+          <section class="system-card spacing-card">
+            <div class="system-heading"><span class="eyebrow">LAYOUT TOKENS</span><strong>4 px base rhythm</strong></div>
+            <div class="token-row"><span>04</span><i style="width:4px"></i><small>Micro gap</small></div>
+            <div class="token-row"><span>08</span><i style="width:16px"></i><small>Inline gap</small></div>
+            <div class="token-row"><span>16</span><i style="width:32px"></i><small>Control padding</small></div>
+            <div class="token-row"><span>24</span><i style="width:48px"></i><small>Card padding</small></div>
+            <div class="token-row"><span>32</span><i style="width:64px"></i><small>Section gap</small></div>
+            <div class="radius-row"><span class="radius r4">4</span><span class="radius r8">8</span><span class="radius r12">12</span><span class="radius r16">16</span><span class="radius rfull">Full</span></div>
+          </section>
+        </div>
+
+        <section class="component-board">
+          <div class="system-heading"><span class="eyebrow">CORE COMPONENTS</span><strong>Decision-focused states</strong></div>
+          <div class="component-grid">
+            <article class="component-cell"><span class="component-label">BUTTON</span><div class="component-demo button-demo"><button class="button primary">Request approval</button><button class="button secondary">Compare</button><button class="button quiet">View activity</button><button class="button" disabled>Unavailable</button></div><small>44 px minimum target · persistent focus ring</small></article>
+            <article class="component-cell"><span class="component-label">STATUS BADGE</span><div class="component-demo"><span class="badge review">In review</span><span class="badge approved">Approved</span><span class="badge attention">Needs input</span><span class="badge">Draft</span></div><small>Color is always paired with explicit text.</small></article>
+            <article class="component-cell"><span class="component-label">VERSION CHIP</span><div class="component-demo version-selector"><button>V02</button><button class="is-current">V03 <small>Current</small></button></div><small>The current file is visible before any action.</small></article>
+            <article class="component-cell"><span class="component-label">NAVIGATION ITEM</span><div class="component-demo nav-demo"><button class="nav-item is-active"><span class="demo-icon">◆</span>Review<span class="nav-count">3</span></button><button class="nav-item"><span class="demo-icon">◇</span>Versions</button></div><small>Selected state combines fill, label, and contrast.</small></article>
+            <article class="component-cell comment-demo"><span class="component-label">COMMENT CARD</span><div class="comment-card is-active"><div class="comment-meta"><span class="avatar gold">SM</span><div><strong>Sofia M.</strong><small>Approver · 16 min ago</small></div><span class="comment-number">01</span></div><p>Could the date remain legible at mobile size?</p><div class="comment-actions"><button>Mark resolved</button><button>Reply</button></div></div><small>Pinned to an exact version and visual location.</small></article>
+            <article class="component-cell composer-demo"><span class="component-label">COMMENT COMPOSER</span><div class="composer-static"><label>Contextual comment</label><div class="input-shell">Write a clear, actionable note…</div><div><span class="meta">ATTACHED TO V03</span><button class="button primary small">Add comment</button></div></div><small>Never loses the version relationship.</small></article>
+            <article class="component-cell dialog-demo"><span class="component-label">APPROVAL DIALOG</span><div class="dialog-mini"><span class="eyebrow">EXPLICIT APPROVAL</span><h3>Approve Version 03?</h3><p>Confirm the exact file before delivery unlocks.</p><div class="check-mini"><span>✓</span>I reviewed Version 03.</div><div class="dialog-actions"><button class="button secondary small">Cancel</button><button class="button primary small">Confirm</button></div></div><small>A deliberate record, not conversational ambiguity.</small></article>
+          </div>
+        </section>
+
+        <section class="accessibility-strip"><span class="eyebrow">ACCESSIBILITY BASELINE</span><strong>WCAG-aware contrast · 44 px targets · keyboard focus · text labels beyond color · reduced-motion support</strong></section>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="approvalDialog">
+    <form method="dialog" class="dialog-card" id="approvalForm">
+      <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      <span class="eyebrow">EXPLICIT APPROVAL</span>
+      <h2>Approve Version 03?</h2>
+      <p>You are approving the current version for final delivery. Open comments will remain visible in the record.</p>
+      <div class="dialog-summary"><span class="meta">SPRING ARTS FESTIVAL</span><strong>V03 · Sep 10 · 14:32</strong><small>3 open comments · Sofia M. is the decision owner</small></div>
+      <label class="check-row"><input type="checkbox" id="approvalCheck" required /><span>I confirm that Version 03 is the file I reviewed.</span></label>
+      <label for="approvalNote">Optional approval note</label>
+      <textarea id="approvalNote" placeholder="Add context for the delivery record…"></textarea>
+      <div class="dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="approve" id="confirmApproval">Confirm approval</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
