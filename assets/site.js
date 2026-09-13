@@ -1,5 +1,30 @@
 (() => {
   const body = document.body;
+  const projectFiles = new Set([
+    'baly-energy-drink.html',
+    'beyond-the-sky.html',
+    'cacau-parque.html',
+    'doaleite.html',
+    'matcha-mojo.html',
+    'revision-room.html',
+    'songbird.html',
+    'web-design-coffee-shops.html'
+  ]);
+  const currentFile = decodeURIComponent(window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  if (projectFiles.has(currentFile) && !window.location.hash) {
+    const resetProjectScroll = () => {
+      const root = document.documentElement;
+      const previousBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+      window.requestAnimationFrame(() => { root.style.scrollBehavior = previousBehavior; });
+    };
+    resetProjectScroll();
+    window.addEventListener('pageshow', resetProjectScroll);
+    window.addEventListener('load', resetProjectScroll, { once: true });
+  }
+
   const menuButton = document.querySelector('[data-menu-button]');
   const mobileNav = document.querySelector('[data-mobile-nav]');
 
@@ -23,43 +48,55 @@
 
   const sunflowerTriggers = [...document.querySelectorAll('[data-sunflower-trigger]')];
   if (sunflowerTriggers.length) {
-    let taps = 0;
-    let resetTimer = 0;
-    const bloom = () => {
-      document.querySelector('.sunflower-layer')?.remove();
+    const assets = [
+      'assets/images/ui/easteregg-sunflower.png',
+      'assets/images/ui/easteregg-camera.png'
+    ];
+    const bloom = trigger => {
+      document.querySelector('.portfolio-confetti-layer')?.remove();
       const layer = document.createElement('div');
-      layer.className = 'sunflower-layer';
+      layer.className = 'portfolio-confetti-layer';
       layer.setAttribute('aria-hidden', 'true');
-      const total = window.innerWidth < 760 ? 12 : 20;
+
+      const triggerRect = trigger.getBoundingClientRect();
+      const originX = triggerRect.left + (triggerRect.width / 2);
+      const originY = triggerRect.top + (triggerRect.height / 2);
+      const total = window.innerWidth < 760 ? 30 : 52;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       for (let index = 0; index < total; index += 1) {
-        const flower = document.createElement('span');
-        flower.className = 'sunflower-bloom';
-        flower.style.left = `${5 + Math.random() * 90}%`;
-        flower.style.top = `${12 + Math.random() * 78}%`;
-        flower.style.setProperty('--flower-size', `${44 + Math.random() * 62}px`);
-        flower.style.setProperty('--flower-delay', `${Math.random() * .45}s`);
-        flower.style.setProperty('--flower-rotate', `${-28 + Math.random() * 56}deg`);
-        for (let petal = 0; petal < 10; petal += 1) {
-          const shape = document.createElement('i');
-          shape.style.setProperty('--petal', petal);
-          flower.appendChild(shape);
-        }
-        layer.appendChild(flower);
+        const sprite = document.createElement('img');
+        const isCamera = index % 5 === 0;
+        const angle = (-Math.PI * .95) + (Math.random() * Math.PI * .9);
+        const distance = Math.max(window.innerWidth, window.innerHeight) * (.25 + Math.random() * .75);
+        const burstX = Math.cos(angle) * distance;
+        const burstY = Math.sin(angle) * distance;
+
+        sprite.className = `portfolio-confetti ${isCamera ? 'is-camera' : 'is-sunflower'}${reduceMotion ? ' is-reduced' : ''}`;
+        sprite.src = assets[isCamera ? 1 : 0];
+        sprite.alt = '';
+        sprite.decoding = 'async';
+        sprite.style.left = reduceMotion ? `${5 + Math.random() * 90}%` : `${originX}px`;
+        sprite.style.top = reduceMotion ? `${8 + Math.random() * 78}%` : `${originY}px`;
+        sprite.style.setProperty('--burst-x', `${burstX}px`);
+        sprite.style.setProperty('--burst-y', `${burstY}px`);
+        sprite.style.setProperty('--fall-x', `${burstX + (-120 + Math.random() * 240)}px`);
+        sprite.style.setProperty('--fall-y', `${window.innerHeight - originY + 180 + Math.random() * 260}px`);
+        sprite.style.setProperty('--sprite-size', `${isCamera ? 58 + Math.random() * 56 : 34 + Math.random() * 48}px`);
+        sprite.style.setProperty('--sprite-delay', `${Math.random() * .3}s`);
+        sprite.style.setProperty('--sprite-duration', `${3.2 + Math.random() * 1.8}s`);
+        sprite.style.setProperty('--sprite-rotate', `${-300 + Math.random() * 600}deg`);
+        layer.appendChild(sprite);
       }
+
       document.body.appendChild(layer);
-      window.setTimeout(() => layer.remove(), 3600);
+      window.setTimeout(() => layer.remove(), 5600);
     };
+
     sunflowerTriggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        taps += 1;
-        window.clearTimeout(resetTimer);
-        if (taps >= 3) {
-          taps = 0;
-          bloom();
-          return;
-        }
-        resetTimer = window.setTimeout(() => { taps = 0; }, 2200);
-      });
+      trigger.setAttribute('aria-label', 'Release the sunflowers');
+      trigger.setAttribute('title', 'Release the sunflowers');
+      trigger.addEventListener('click', () => bloom(trigger));
     });
   }
 
