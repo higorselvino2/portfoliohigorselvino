@@ -157,6 +157,16 @@
     syncCarouselHint();
   });
 
+  document.querySelectorAll('[data-before-after]').forEach(comparison => {
+    const range = comparison.querySelector('input[type="range"]');
+    if (!range) return;
+    const syncComparison = () => {
+      comparison.style.setProperty('--reveal', `${range.value}%`);
+    };
+    range.addEventListener('input', syncComparison, { passive: true });
+    syncComparison();
+  });
+
   const lightbox = document.querySelector('[data-lightbox]');
   if (lightbox) {
     const image = lightbox.querySelector('img');
