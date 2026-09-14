@@ -117,6 +117,46 @@
     });
   });
 
+  document.querySelectorAll('[data-swipe-carousel]').forEach(carousel => {
+    const hint = carousel.nextElementSibling?.matches('[data-swipe-hint]')
+      ? carousel.nextElementSibling
+      : null;
+    const thumb = hint?.querySelector('i b');
+    let frame = 0;
+
+    const syncCarouselHint = () => {
+      frame = 0;
+      if (!hint || !thumb) return;
+      const maximum = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+      const visibleRatio = carousel.scrollWidth > 0
+        ? Math.min(1, carousel.clientWidth / carousel.scrollWidth)
+        : 1;
+      const progress = maximum > 0 ? carousel.scrollLeft / maximum : 0;
+      thumb.style.width = `${Math.max(16, visibleRatio * 100)}%`;
+      thumb.style.left = `${progress * Math.max(0, 100 - (visibleRatio * 100))}%`;
+      hint.classList.toggle('is-inactive', maximum < 2);
+      hint.classList.toggle('is-complete', maximum > 0 && progress > .97);
+    };
+
+    const requestSync = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(syncCarouselHint);
+    };
+
+    carousel.addEventListener('scroll', requestSync, { passive: true });
+    carousel.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      carousel.scrollBy({
+        left: (event.key === 'ArrowRight' ? 1 : -1) * carousel.clientWidth * .72,
+        behavior: 'smooth'
+      });
+    });
+    window.addEventListener('resize', requestSync, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(requestSync).observe(carousel);
+    syncCarouselHint();
+  });
+
   const lightbox = document.querySelector('[data-lightbox]');
   if (lightbox) {
     const image = lightbox.querySelector('img');
