@@ -2464,3 +2464,145 @@ body:not(.editorial-page) .menu-button {
   .coffee-site:nth-of-type(even) { grid-template-columns: 1fr; }
   .coffee-browser-screen { aspect-ratio: 16 / 10; }
 }
+
+/* Home typography and editorial rhythm across every project case study */
+body:not(.editorial-page) {
+  --paper: #f7f7f3;
+  --paper-2: #e8edf5;
+  --portfolio-ui-blue: #3f6fc1;
+  --portfolio-ui-yellow: #fcbd4b;
+}
+body:not(.editorial-page) .shell { width: min(100%, 1560px); }
+body:not(.editorial-page) main h1,
+body:not(.editorial-page) main h2,
+body:not(.editorial-page) main h3,
+body:not(.editorial-page) main blockquote,
+body:not(.editorial-page) main .display {
+  font-family: var(--sans);
+  font-style: normal;
+}
+body:not(.editorial-page) main h1 {
+  font-weight: 800;
+  letter-spacing: -.082em;
+  text-transform: uppercase;
+}
+body:not(.editorial-page) main h1 em,
+body:not(.editorial-page) main h2 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
+body:not(.editorial-page) main h2,
+body:not(.editorial-page) .project-lede,
+body:not(.editorial-page) .story-sticky h2,
+body:not(.editorial-page) .award-copy h2,
+body:not(.editorial-page) .beyond-process-copy h3,
+body:not(.editorial-page) .beyond-secondary-heading h3 {
+  font-weight: 800;
+  letter-spacing: -.065em;
+}
+body:not(.editorial-page) main h3 { font-weight: 700; }
+body:not(.editorial-page) main blockquote {
+  font-weight: 800;
+  letter-spacing: -.06em;
+}
+body:not(.editorial-page) .project-heading h1 { line-height: .74; }
+body:not(.editorial-page) .project-lede { line-height: .93; }
+
+body:not(.editorial-page) .hero-frame,
+body:not(.editorial-page) :is(
+  .baly-hero-media,
+  .cacau-hero-media,
+  .matcha-hero-media,
+  .rr-hero-media,
+  .songbird-hero-media
+) {
+  overflow: hidden;
+  border: 0;
+  border-radius: clamp(1rem, 2vw, 2rem);
+}
+body:not(.editorial-page) :is(
+  .baly-hero-media,
+  .cacau-hero-media,
+  .matcha-hero-media,
+  .rr-hero-media,
+  .songbird-hero-media
+) {
+  width: min(calc(100% - (2 * var(--page-pad))), 1560px);
+  margin-inline: auto;
+}
+body:not(.editorial-page) :is(
+  .hero-caption,
+  .baly-hero-media figcaption,
+  .cacau-hero-media figcaption,
+  .matcha-hero-media figcaption,
+  .rr-hero-media figcaption,
+  .songbird-hero-media figcaption
+) { border-radius: 999px; }
+
+body:not(.editorial-page) :is(
+  .baly-principles,
+  .beyond-principles,
+  .cacau-principles,
+  .coffee-principles,
+  .matcha-principles,
+  .rr-access-grid,
+  .songbird-principles
+) {
+  gap: .75rem;
+  border: 0;
+  background: transparent;
+}
+body:not(.editorial-page) :is(
+  .baly-principles,
+  .beyond-principles,
+  .cacau-principles,
+  .coffee-principles,
+  .matcha-principles,
+  .rr-access-grid,
+  .songbird-principles
+) article { overflow: hidden; border-radius: 1rem; }
+
+body:not(.editorial-page) :is(.button, .book-button) {
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-weight: 800;
+}
+body:not(.editorial-page) .button-primary {
+  background: var(--portfolio-ui-blue);
+  border-color: var(--portfolio-ui-blue);
+  color: #fff;
+}
+body:not(.editorial-page) .button-primary:hover {
+  background: #0b0b0b;
+  border-color: #0b0b0b;
+  color: #fff;
+}
+body:not(.editorial-page) .next-project { border-top-color: rgba(255,255,255,.22); }
+body:not(.editorial-page) .next-project small {
+  color: var(--portfolio-ui-yellow);
+  font-family: var(--sans);
+  font-weight: 800;
+}
+body:not(.editorial-page) .next-project strong,
+body:not(.editorial-page) .next-project > span {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 800;
+}
+body:not(.editorial-page) .next-project strong { letter-spacing: -.065em; }
+body:not(.editorial-page) .next-project > span { color: var(--portfolio-ui-blue); }
+
+@media (max-width: 760px) {
+  body:not(.editorial-page) main h1 { letter-spacing: -.072em; }
+  body:not(.editorial-page) main h2 { letter-spacing: -.055em; }
+  .rr-title-grid > * { min-width: 0; }
+  .rr-title-grid h1 { max-width: 100%; font-size: clamp(3.8rem, 17.5vw, 6.4rem); }
+  body:not(.editorial-page) :is(
+    .baly-hero-media,
+    .cacau-hero-media,
+    .matcha-hero-media,
+    .rr-hero-media,
+    .songbird-hero-media
+  ) { width: calc(100% - 1.25rem); }
+}
