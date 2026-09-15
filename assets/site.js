@@ -48,14 +48,38 @@
 
   const sunflowerTriggers = [...document.querySelectorAll('[data-sunflower-trigger]')];
   if (sunflowerTriggers.length) {
-    const assets = [
-      'assets/images/ui/easteregg-sunflower.png',
-      'assets/images/ui/easteregg-camera.png'
-    ];
-    const bloom = trigger => {
+    const surpriseSprites = {
+      sunflower: {
+        src: 'assets/images/ui/easteregg-sunflower.png',
+        className: 'is-sunflower',
+        minSize: 34,
+        sizeRange: 48
+      },
+      camera: {
+        src: 'assets/images/ui/easteregg-camera.png',
+        className: 'is-camera',
+        minSize: 58,
+        sizeRange: 56
+      },
+      rodriguez: {
+        src: 'assets/images/ui/easteregg-rodriguez.webp',
+        className: 'is-rodriguez',
+        minSize: 48,
+        sizeRange: 44
+      }
+    };
+    const spritePools = {
+      1: ['sunflower'],
+      2: ['sunflower', 'sunflower', 'sunflower', 'camera'],
+      3: ['sunflower', 'sunflower', 'sunflower', 'camera', 'camera', 'rodriguez']
+    };
+    const triggerLevels = new WeakMap();
+
+    const bloom = (trigger, level) => {
       document.querySelector('.portfolio-confetti-layer')?.remove();
       const layer = document.createElement('div');
       layer.className = 'portfolio-confetti-layer';
+      layer.dataset.surpriseLevel = String(level);
       layer.setAttribute('aria-hidden', 'true');
 
       const triggerRect = trigger.getBoundingClientRect();
@@ -63,17 +87,19 @@
       const originY = triggerRect.top + (triggerRect.height / 2);
       const total = window.innerWidth < 760 ? 30 : 52;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const pool = spritePools[level];
 
       for (let index = 0; index < total; index += 1) {
         const sprite = document.createElement('img');
-        const isCamera = index % 5 === 0;
+        const spriteType = pool[index % pool.length];
+        const spriteConfig = surpriseSprites[spriteType];
         const angle = (-Math.PI * .95) + (Math.random() * Math.PI * .9);
         const distance = Math.max(window.innerWidth, window.innerHeight) * (.25 + Math.random() * .75);
         const burstX = Math.cos(angle) * distance;
         const burstY = Math.sin(angle) * distance;
 
-        sprite.className = `portfolio-confetti ${isCamera ? 'is-camera' : 'is-sunflower'}${reduceMotion ? ' is-reduced' : ''}`;
-        sprite.src = assets[isCamera ? 1 : 0];
+        sprite.className = `portfolio-confetti ${spriteConfig.className}${reduceMotion ? ' is-reduced' : ''}`;
+        sprite.src = spriteConfig.src;
         sprite.alt = '';
         sprite.decoding = 'async';
         sprite.style.left = reduceMotion ? `${5 + Math.random() * 90}%` : `${originX}px`;
@@ -82,7 +108,7 @@
         sprite.style.setProperty('--burst-y', `${burstY}px`);
         sprite.style.setProperty('--fall-x', `${burstX + (-120 + Math.random() * 240)}px`);
         sprite.style.setProperty('--fall-y', `${window.innerHeight - originY + 180 + Math.random() * 260}px`);
-        sprite.style.setProperty('--sprite-size', `${isCamera ? 58 + Math.random() * 56 : 34 + Math.random() * 48}px`);
+        sprite.style.setProperty('--sprite-size', `${spriteConfig.minSize + Math.random() * spriteConfig.sizeRange}px`);
         sprite.style.setProperty('--sprite-delay', `${Math.random() * .3}s`);
         sprite.style.setProperty('--sprite-duration', `${3.2 + Math.random() * 1.8}s`);
         sprite.style.setProperty('--sprite-rotate', `${-300 + Math.random() * 600}deg`);
@@ -96,7 +122,19 @@
     sunflowerTriggers.forEach(trigger => {
       trigger.setAttribute('aria-label', 'Release the sunflowers');
       trigger.setAttribute('title', 'Release the sunflowers');
-      trigger.addEventListener('click', () => bloom(trigger));
+      trigger.addEventListener('click', () => {
+        const level = Math.min(3, (triggerLevels.get(trigger) || 0) + 1);
+        triggerLevels.set(trigger, level);
+        bloom(trigger, level);
+
+        const nextLabel = level === 1
+          ? 'Release the sunflowers and cameras'
+          : level === 2
+            ? 'Invite Rodriguez too'
+            : 'Release the whole crew again';
+        trigger.setAttribute('aria-label', nextLabel);
+        trigger.setAttribute('title', nextLabel);
+      });
     });
   }
 
