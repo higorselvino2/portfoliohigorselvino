@@ -1954,9 +1954,16 @@ button { color: inherit; }
 .editorial-footer-column span { width: fit-content; color: rgba(255,255,255,.72); font-size: .86rem; line-height: 1.45; }
 .editorial-footer-column a:hover { color: #fff; }
 .editorial-copyright { display: flex; align-items: center; gap: .65rem; }
-.sunflower-trigger { width: 1.45rem; height: 1.45rem; padding: 0; border: 0; border-radius: 50%; background: url("images/ui/easteregg-sunflower.png") center / contain no-repeat; cursor: pointer; filter: drop-shadow(0 .1rem .28rem rgba(0,0,0,.25)); transition: transform .2s, filter .2s; }
+.sunflower-trigger { position: relative; isolation: isolate; width: 1.45rem; height: 1.45rem; padding: 0; border: 0; border-radius: 50%; background: url("images/ui/easteregg-sunflower.png") center / contain no-repeat; cursor: pointer; filter: drop-shadow(0 .1rem .28rem rgba(0,0,0,.25)); touch-action: manipulation; user-select: none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none; transform-origin: center; transition: transform .2s, filter .2s; }
+.sunflower-trigger::before,
+.sunflower-trigger::after { content: ""; position: absolute; left: 50%; top: 50%; z-index: -1; width: 2rem; height: 2rem; border: 1px solid rgba(252,189,75,.78); border-radius: 50%; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.55); }
+.sunflower-trigger::after { z-index: 1; width: 2.35rem; height: 2.35rem; border-width: 2px; }
 .sunflower-trigger:hover,
 .sunflower-trigger:focus-visible { transform: scale(1.25) rotate(9deg); filter: drop-shadow(0 .2rem .5rem rgba(252,189,75,.55)); outline: 2px solid #fff; outline-offset: 3px; }
+.sunflower-trigger.is-charging { animation: sunflower-charge var(--charge-duration, 1700ms) cubic-bezier(.2,.72,.18,1) forwards; filter: drop-shadow(0 0 .3rem rgba(252,189,75,.72)) drop-shadow(0 0 .8rem rgba(252,189,75,.38)); }
+.sunflower-trigger.is-charging::before { animation: sunflower-charge-halo .58s ease-in-out infinite alternate; }
+.sunflower-trigger.is-overloaded { animation: sunflower-pop .62s cubic-bezier(.2,.82,.2,1) both; }
+.sunflower-trigger.is-overloaded::after { animation: sunflower-shockwave .62s ease-out both; }
 .portfolio-confetti-layer { position: fixed; inset: 0; z-index: 9998; overflow: hidden; pointer-events: none; }
 .portfolio-confetti { position: absolute; width: var(--sprite-size); max-width: none; height: auto; transform: translate(-50%, -50%) scale(.15); transform-origin: center; opacity: 0; filter: drop-shadow(0 .45rem .8rem rgba(0,0,0,.2)); will-change: transform, opacity; animation: portfolio-confetti-flight var(--sprite-duration) var(--sprite-delay) cubic-bezier(.16,.8,.3,1) both; }
 .portfolio-confetti.is-camera { z-index: 1; }
@@ -1968,6 +1975,32 @@ button { color: inherit; }
   46% { transform: translate(calc(-50% + var(--burst-x)), calc(-50% + var(--burst-y))) scale(1) rotate(var(--sprite-rotate)); opacity: 1; }
   76% { opacity: 1; }
   100% { transform: translate(calc(-50% + var(--fall-x)), calc(-50% + var(--fall-y))) scale(.82) rotate(var(--sprite-rotate)); opacity: 0; }
+}
+@keyframes sunflower-charge {
+  0% { transform: scale(1) rotate(0); }
+  42% { transform: scale(1.42) rotate(0); }
+  70% { transform: scale(1.72) rotate(0); }
+  76% { transform: scale(1.77) translate(-.5px, .5px) rotate(-1deg); }
+  82% { transform: scale(1.81) translate(.5px, -.5px) rotate(2deg); }
+  88% { transform: scale(1.84) translate(-1px, 0) rotate(-3deg); }
+  94% { transform: scale(1.87) translate(1px, .5px) rotate(3deg); }
+  100% { transform: scale(1.9) translate(-1px, -.5px) rotate(-4deg); }
+}
+@keyframes sunflower-charge-halo {
+  from { opacity: .28; transform: translate(-50%, -50%) scale(.72); }
+  to { opacity: .92; transform: translate(-50%, -50%) scale(1.38); }
+}
+@keyframes sunflower-pop {
+  0% { transform: scale(1.9) rotate(-4deg); opacity: 1; }
+  22% { transform: scale(2.16) rotate(7deg); opacity: 1; }
+  42% { transform: scale(.36) rotate(-16deg); opacity: .08; }
+  72% { transform: scale(1.2) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes sunflower-shockwave {
+  0% { opacity: .95; transform: translate(-50%, -50%) scale(.25); }
+  70% { opacity: .45; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(3.4); }
 }
 .legal-layout { display: grid; grid-template-columns: .46fr 1.54fr; gap: clamp(3rem, 9vw, 10rem); align-items: start; }
 .legal-sidebar { position: sticky; top: 7rem; }
@@ -2031,6 +2064,10 @@ button { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sunflower-trigger.is-charging { animation-name: sunflower-charge-reduced; }
+  .sunflower-trigger.is-charging::before { animation: none; opacity: .7; transform: translate(-50%, -50%) scale(1); }
+  .sunflower-trigger.is-overloaded { animation: sunflower-pop-reduced .38s ease-out both; }
+  .sunflower-trigger.is-overloaded::after { animation-duration: .38s; }
   .portfolio-confetti {
     animation-name: portfolio-confetti-reduced !important;
     animation-duration: 1.9s !important;
@@ -2040,6 +2077,15 @@ button { color: inherit; }
     0% { transform: translate(-50%, -50%) scale(.2); opacity: 0; }
     15%, 78% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     100% { transform: translate(-50%, -50%) scale(.85); opacity: 0; }
+  }
+  @keyframes sunflower-charge-reduced {
+    from { transform: scale(1); }
+    to { transform: scale(1.45); }
+  }
+  @keyframes sunflower-pop-reduced {
+    0% { transform: scale(1.45); opacity: 1; }
+    45% { transform: scale(.72); opacity: .35; }
+    100% { transform: scale(1); opacity: 1; }
   }
 }
 

@@ -74,6 +74,7 @@
       3: ['sunflower', 'sunflower', 'sunflower', 'camera', 'camera', 'rodriguez']
     };
     const triggerLevels = new WeakMap();
+    const holdDuration = 1700;
 
     const bloom = (trigger, level) => {
       document.querySelector('.portfolio-confetti-layer')?.remove();
@@ -120,9 +121,18 @@
     };
 
     sunflowerTriggers.forEach(trigger => {
-      trigger.setAttribute('aria-label', 'Release the sunflowers');
-      trigger.setAttribute('title', 'Release the sunflowers');
-      trigger.addEventListener('click', () => {
+      let holdTimer = 0;
+      let holdActive = false;
+      let suppressNextClick = false;
+      let popTimer = 0;
+
+      const setTriggerLabel = label => {
+        const completeLabel = `${label}. Press and hold to charge the surprise`;
+        trigger.setAttribute('aria-label', completeLabel);
+        trigger.setAttribute('title', completeLabel);
+      };
+
+      const releaseSurprise = () => {
         const level = Math.min(3, (triggerLevels.get(trigger) || 0) + 1);
         triggerLevels.set(trigger, level);
         bloom(trigger, level);
@@ -132,8 +142,85 @@
           : level === 2
             ? 'Invite Rodriguez too'
             : 'Release the whole crew again';
-        trigger.setAttribute('aria-label', nextLabel);
-        trigger.setAttribute('title', nextLabel);
+        setTriggerLabel(nextLabel);
+      };
+
+      const resetCharge = () => {
+        window.clearTimeout(holdTimer);
+        holdTimer = 0;
+        holdActive = false;
+        trigger.classList.remove('is-charging');
+      };
+
+      const completeCharge = () => {
+        if (!holdActive) return;
+        resetCharge();
+        suppressNextClick = true;
+        trigger.classList.add('is-overloaded');
+        releaseSurprise();
+
+        window.clearTimeout(popTimer);
+        popTimer = window.setTimeout(() => trigger.classList.remove('is-overloaded'), 620);
+      };
+
+      const startCharge = () => {
+        if (holdActive) return;
+        window.clearTimeout(popTimer);
+        trigger.classList.remove('is-overloaded');
+        trigger.classList.add('is-charging');
+        trigger.style.setProperty('--charge-duration', `${holdDuration}ms`);
+        holdActive = true;
+        holdTimer = window.setTimeout(completeCharge, holdDuration);
+      };
+
+      setTriggerLabel('Release the sunflowers');
+
+      trigger.addEventListener('pointerdown', event => {
+        if (event.button !== undefined && event.button !== 0) return;
+        suppressNextClick = false;
+        startCharge();
+        trigger.setPointerCapture?.(event.pointerId);
+      });
+
+      trigger.addEventListener('pointerup', event => {
+        if (holdActive) resetCharge();
+        if (trigger.hasPointerCapture?.(event.pointerId)) {
+          trigger.releasePointerCapture(event.pointerId);
+        }
+      });
+
+      trigger.addEventListener('pointercancel', () => {
+        resetCharge();
+        suppressNextClick = false;
+      });
+      trigger.addEventListener('lostpointercapture', () => {
+        if (holdActive) resetCharge();
+      });
+
+      trigger.addEventListener('keydown', event => {
+        if (event.key === ' ' && !event.repeat) startCharge();
+      });
+
+      trigger.addEventListener('keyup', event => {
+        if (event.key === ' ' && holdActive) resetCharge();
+      });
+
+      trigger.addEventListener('blur', () => {
+        resetCharge();
+        suppressNextClick = false;
+      });
+
+      trigger.addEventListener('contextmenu', event => {
+        if (holdActive || suppressNextClick) event.preventDefault();
+      });
+
+      trigger.addEventListener('click', event => {
+        if (suppressNextClick) {
+          suppressNextClick = false;
+          event.preventDefault();
+          return;
+        }
+        releaseSurprise();
       });
     });
   }
