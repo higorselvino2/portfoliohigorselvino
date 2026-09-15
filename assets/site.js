@@ -74,7 +74,10 @@
       3: ['sunflower', 'sunflower', 'sunflower', 'camera', 'camera', 'rodriguez']
     };
     const triggerLevels = new WeakMap();
+    const rapidClickHistory = new WeakMap();
     const holdDuration = 1700;
+    const rapidClickWindow = 2600;
+    let activePlayground = null;
 
     const bloom = (trigger, level) => {
       document.querySelector('.portfolio-confetti-layer')?.remove();
@@ -118,6 +121,294 @@
 
       document.body.appendChild(layer);
       window.setTimeout(() => layer.remove(), 5600);
+    };
+
+    const openPlayground = trigger => {
+      if (activePlayground || document.querySelector('.surprise-playground')) return;
+
+      const previousFocus = document.activeElement;
+      const layer = document.createElement('section');
+      const backdrop = document.createElement('div');
+      const toolbar = document.createElement('div');
+      const toolbarCopy = document.createElement('p');
+      const toolbarTitle = document.createElement('strong');
+      const toolbarHint = document.createElement('span');
+      const closeButton = document.createElement('button');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const compact = window.innerWidth < 720;
+      const spriteTypes = compact
+        ? ['sunflower', 'camera', 'rodriguez', 'sunflower', 'camera', 'sunflower', 'rodriguez', 'camera']
+        : ['sunflower', 'camera', 'rodriguez', 'sunflower', 'camera', 'sunflower', 'rodriguez', 'camera', 'sunflower', 'rodriguez', 'camera', 'sunflower'];
+      const spriteLabels = {
+        sunflower: 'Sunflower',
+        camera: 'Camera',
+        rodriguez: 'Rodriguez'
+      };
+      const spriteMetrics = {
+        sunflower: { size: compact ? 66 : 92, ratio: 1 },
+        camera: { size: compact ? 82 : 116, ratio: .9 },
+        rodriguez: { size: compact ? 66 : 92, ratio: .665 }
+      };
+      const states = [];
+      let animationFrame = 0;
+      let lastFrame = performance.now();
+      let topLayer = 1;
+
+      layer.className = 'surprise-playground';
+      layer.setAttribute('role', 'dialog');
+      layer.setAttribute('aria-modal', 'true');
+      layer.setAttribute('aria-label', 'Floating friends playground');
+      backdrop.className = 'surprise-playground-backdrop';
+      toolbar.className = 'surprise-playground-toolbar';
+      toolbarCopy.className = 'surprise-playground-copy';
+      toolbarTitle.textContent = 'Balloon mode';
+      toolbarHint.textContent = 'Drag and throw the floating friends.';
+      closeButton.className = 'surprise-playground-close';
+      closeButton.type = 'button';
+      closeButton.textContent = 'Close';
+      closeButton.setAttribute('aria-label', 'Close balloon mode');
+
+      toolbarCopy.append(toolbarTitle, toolbarHint);
+      toolbar.append(toolbarCopy, closeButton);
+      layer.append(backdrop, toolbar);
+      document.body.appendChild(layer);
+      body.classList.add('surprise-playground-open');
+
+      const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
+
+      const render = state => {
+        state.element.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) rotate(${state.rotation}deg)`;
+      };
+
+      const keepInBounds = (state, bounce = false) => {
+        const maximumX = Math.max(0, window.innerWidth - state.width);
+        const maximumY = Math.max(0, window.innerHeight - state.height);
+
+        if (state.x <= 0) {
+          state.x = 0;
+          if (bounce && state.vx < 0) state.vx = Math.abs(state.vx) * .82;
+        } else if (state.x >= maximumX) {
+          state.x = maximumX;
+          if (bounce && state.vx > 0) state.vx = -Math.abs(state.vx) * .82;
+        }
+
+        if (state.y <= 0) {
+          state.y = 0;
+          if (bounce && state.vy < 0) state.vy = Math.abs(state.vy) * .82;
+        } else if (state.y >= maximumY) {
+          state.y = maximumY;
+          if (bounce && state.vy > 0) state.vy = -Math.abs(state.vy) * .82;
+        }
+      };
+
+      const finishDrag = (state, event) => {
+        if (!state.dragging || (event.pointerId !== undefined && event.pointerId !== state.pointerId)) return;
+        state.dragging = false;
+        state.element.classList.remove('is-dragging');
+        if (event.pointerId !== undefined && state.element.hasPointerCapture?.(event.pointerId)) {
+          state.element.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      spriteTypes.forEach((type, index) => {
+        const metric = spriteMetrics[type];
+        const size = metric.size * (.9 + Math.random() * .2);
+        const item = document.createElement('button');
+        const image = document.createElement('img');
+        const columns = compact ? 3 : 4;
+        const rows = Math.ceil(spriteTypes.length / columns);
+        const width = size;
+        const height = size / metric.ratio;
+        const column = index % columns;
+        const row = Math.floor(index / columns);
+        const cellWidth = window.innerWidth / columns;
+        const cellHeight = window.innerHeight / rows;
+        const jitterX = (Math.random() - .5) * cellWidth * .3;
+        const jitterY = (Math.random() - .5) * cellHeight * .25;
+        const state = {
+          element: item,
+          width,
+          height,
+          x: clamp((column + .5) * cellWidth - width / 2 + jitterX, 8, Math.max(8, window.innerWidth - width - 8)),
+          y: clamp((row + .5) * cellHeight - height / 2 + jitterY, 8, Math.max(8, window.innerHeight - height - 8)),
+          vx: reducedMotion ? 0 : (Math.random() - .5) * .08,
+          vy: reducedMotion ? 0 : (Math.random() - .5) * .07,
+          rotation: (Math.random() - .5) * 12,
+          spin: reducedMotion ? 0 : (Math.random() - .5) * .012,
+          phase: Math.random() * Math.PI * 2,
+          frequency: .00055 + Math.random() * .00045,
+          dragging: false,
+          pointerId: null,
+          pointerOffsetX: 0,
+          pointerOffsetY: 0,
+          lastPointerX: 0,
+          lastPointerY: 0,
+          lastPointerTime: 0
+        };
+
+        item.className = `surprise-floater ${surpriseSprites[type].className}`;
+        item.type = 'button';
+        item.style.setProperty('--float-size', `${width}px`);
+        item.style.setProperty('--float-ratio', String(metric.ratio));
+        item.style.setProperty('--float-delay', `${index * 45}ms`);
+        item.setAttribute('aria-label', `${spriteLabels[type]}. Drag it or use the arrow keys to move it`);
+        image.src = surpriseSprites[type].src;
+        image.alt = '';
+        image.draggable = false;
+        image.decoding = 'async';
+        item.appendChild(image);
+        layer.appendChild(item);
+        states.push(state);
+        render(state);
+
+        item.addEventListener('pointerdown', event => {
+          if (event.button !== undefined && event.button !== 0) return;
+          event.preventDefault();
+          state.dragging = true;
+          state.pointerId = event.pointerId;
+          state.pointerOffsetX = event.clientX - state.x;
+          state.pointerOffsetY = event.clientY - state.y;
+          state.lastPointerX = event.clientX;
+          state.lastPointerY = event.clientY;
+          state.lastPointerTime = performance.now();
+          state.vx = 0;
+          state.vy = 0;
+          topLayer += 1;
+          item.style.zIndex = String(topLayer);
+          item.classList.add('is-dragging');
+          item.setPointerCapture?.(event.pointerId);
+        });
+
+        item.addEventListener('pointermove', event => {
+          if (!state.dragging || event.pointerId !== state.pointerId) return;
+          event.preventDefault();
+          const now = performance.now();
+          const elapsed = Math.max(8, now - state.lastPointerTime);
+          const maximumX = Math.max(0, window.innerWidth - state.width);
+          const maximumY = Math.max(0, window.innerHeight - state.height);
+          const nextX = clamp(event.clientX - state.pointerOffsetX, 0, maximumX);
+          const nextY = clamp(event.clientY - state.pointerOffsetY, 0, maximumY);
+          const instantVx = (nextX - state.x) / elapsed;
+          const instantVy = (nextY - state.y) / elapsed;
+
+          state.vx = clamp((state.vx * .22) + (instantVx * .78), -2.35, 2.35);
+          state.vy = clamp((state.vy * .22) + (instantVy * .78), -2.35, 2.35);
+          state.x = nextX;
+          state.y = nextY;
+          state.lastPointerX = event.clientX;
+          state.lastPointerY = event.clientY;
+          state.lastPointerTime = now;
+          render(state);
+        });
+
+        item.addEventListener('pointerup', event => finishDrag(state, event));
+        item.addEventListener('pointercancel', event => {
+          state.vx = 0;
+          state.vy = 0;
+          finishDrag(state, event);
+        });
+
+        item.addEventListener('keydown', event => {
+          const distance = event.shiftKey ? 48 : 24;
+          if (event.key === 'ArrowLeft') state.x -= distance;
+          else if (event.key === 'ArrowRight') state.x += distance;
+          else if (event.key === 'ArrowUp') state.y -= distance;
+          else if (event.key === 'ArrowDown') state.y += distance;
+          else if (event.key === ' ') {
+            state.vx = (Math.random() - .5) * 1.2;
+            state.vy = -.45 - Math.random() * .55;
+          } else return;
+
+          event.preventDefault();
+          keepInBounds(state);
+          render(state);
+        });
+      });
+
+      const animate = now => {
+        const elapsed = Math.min(34, Math.max(0, now - lastFrame));
+        lastFrame = now;
+
+        states.forEach(state => {
+          if (state.dragging) return;
+          const driftX = reducedMotion ? 0 : Math.sin((now * state.frequency) + state.phase) * .018;
+          const driftY = reducedMotion ? 0 : Math.cos((now * state.frequency * .83) + state.phase) * .014;
+          const damping = Math.pow(.992, elapsed / 16.667);
+
+          state.x += (state.vx + driftX) * elapsed;
+          state.y += (state.vy + driftY) * elapsed;
+          state.vx *= damping;
+          state.vy *= damping;
+          state.rotation += (state.spin + (state.vx * .014)) * elapsed;
+          keepInBounds(state, true);
+          render(state);
+        });
+
+        animationFrame = window.requestAnimationFrame(animate);
+      };
+
+      const resizePlayground = () => {
+        states.forEach(state => {
+          keepInBounds(state);
+          render(state);
+        });
+      };
+
+      const closePlayground = () => {
+        if (!activePlayground) return;
+        window.cancelAnimationFrame(animationFrame);
+        window.removeEventListener('resize', resizePlayground);
+        document.removeEventListener('keydown', handlePlaygroundKeydown);
+        body.classList.remove('surprise-playground-open');
+        layer.classList.add('is-closing');
+        window.setTimeout(() => layer.remove(), 260);
+        if (previousFocus?.focus) previousFocus.focus({ preventScroll: true });
+        activePlayground = null;
+      };
+
+      const handlePlaygroundKeydown = event => {
+        if (event.key === 'Escape') {
+          closePlayground();
+          return;
+        }
+
+        if (event.key === 'Tab') {
+          const controls = [closeButton, ...states.map(state => state.element)];
+          const currentIndex = controls.indexOf(document.activeElement);
+          const direction = event.shiftKey ? -1 : 1;
+          const nextIndex = currentIndex < 0
+            ? 0
+            : (currentIndex + direction + controls.length) % controls.length;
+          event.preventDefault();
+          controls[nextIndex].focus({ preventScroll: true });
+        }
+      };
+
+      activePlayground = { close: closePlayground, layer };
+      closeButton.addEventListener('click', closePlayground);
+      window.addEventListener('resize', resizePlayground, { passive: true });
+      document.addEventListener('keydown', handlePlaygroundKeydown);
+      animationFrame = window.requestAnimationFrame(() => {
+        if (!activePlayground || activePlayground.layer !== layer) return;
+        layer.classList.add('is-visible');
+        states.forEach(state => state.element.classList.add('is-visible'));
+        closeButton.focus({ preventScroll: true });
+        animationFrame = window.requestAnimationFrame(animate);
+      });
+    };
+
+    const registerRapidClick = trigger => {
+      const now = performance.now();
+      const clicks = (rapidClickHistory.get(trigger) || []).filter(time => now - time <= rapidClickWindow);
+      clicks.push(now);
+
+      if (clicks.length >= 7) {
+        rapidClickHistory.set(trigger, []);
+        openPlayground(trigger);
+        return;
+      }
+
+      rapidClickHistory.set(trigger, clicks);
     };
 
     sunflowerTriggers.forEach(trigger => {
@@ -221,6 +512,7 @@
           return;
         }
         releaseSurprise();
+        registerRapidClick(trigger);
       });
     });
   }
