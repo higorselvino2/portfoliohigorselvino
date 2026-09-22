@@ -4,11 +4,11 @@
     'baly-energy-drink.html',
     'beyond-the-sky.html',
     'cacau-parque.html',
-    'doaleite.html',
     'matcha-mojo.html',
     'revision-room.html',
     'songbird.html',
-    'web-design-coffee-shops.html'
+    'web-design-coffee-shops.html',
+    'yen-and-home.html'
   ]);
   const currentFile = decodeURIComponent(window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
