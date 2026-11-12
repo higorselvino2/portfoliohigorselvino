@@ -8,6 +8,7 @@
   <title>Revision Room · Product Design Case Study by Higor Selvino</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="stylesheet" href="assets/styles.css?v=19.6">
+  <link rel="stylesheet" href="assets/story.css?v=20.0">
 </head>
 <body style="--project-accent:#3e5bff">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -103,6 +104,23 @@
         <ol class="rr-flow-list reveal" aria-label="Primary product flow">
           <li><b>01</b><span>Upload V03</span></li><li><b>02</b><span>Review pins</span></li><li><b>03</b><span>Resolve feedback</span></li><li><b>04</b><span>Compare versions</span></li><li><b>05</b><span>Approve</span></li><li><b>06</b><span>Deliver</span></li>
         </ol>
+        <div class="story-launch">
+          <span class="story-kicker">Try the actual prototype</span><h3>Follow a decision through the room.</h3>
+          <p>Open the workspace here and explore its controls. The chapter buttons load example states so you can inspect review, comparison and delivery without leaving the case study.</p>
+          <div class="story-launch-actions"><button type="button" data-launch-demo aria-expanded="false" aria-controls="rr-walkthrough">Launch interactive walkthrough</button><a href="prototypes/revision-room/index.html#review" target="_blank" rel="noopener noreferrer">Open in a full window ↗</a></div>
+          <div id="rr-walkthrough" data-prototype-demo hidden>
+            <div class="story-launch-controls" role="group" aria-label="Prototype example states">
+              <button type="button" data-prototype-view="review" data-help="Select a numbered pin, read its comment and mark feedback as resolved.">01 · Review</button>
+              <button type="button" data-prototype-view="compare" data-help="Drag the comparison control to inspect Version 02 and Version 03.">02 · Compare</button>
+              <button type="button" data-prototype-view="delivery" data-help="Approve Version 03 in the prototype dialog to unlock the example final package.">03 · Approve</button>
+              <button type="button" data-prototype-view="delivery" data-approved="true" data-help="This chapter loads an approved example state. Inspect how approval changes the delivery panel.">04 · Delivery</button>
+            </div>
+            <p class="story-demo-help" data-demo-help aria-live="polite"></p>
+            <iframe class="story-demo-frame" title="Interactive Revision Room review and approval prototype" loading="lazy"></iframe>
+            <div class="story-demo-meta"><span>Interactive concept with sample project data. Scroll inside the workspace to explore.</span><button type="button" data-close-demo>Close walkthrough</button></div>
+          </div>
+        </div>
+
         <div class="rr-scope reveal">
           <article><span>Inside the MVP</span><h3>Everything needed to reach a deliberate decision.</h3><ul><li>Versioned review</li><li>Pinned annotations</li><li>Resolved and open states</li><li>Version comparison</li><li>Explicit approval</li><li>Final package</li></ul></article>
           <article><span>Outside the MVP</span><h3>Features that would dilute the core workflow.</h3><ul><li>Payments and contracts</li><li>Chat and video calls</li><li>Creative-file editing</li><li>AI-generated critique</li></ul></article>
@@ -191,6 +209,7 @@
     <div class="shell footer-inner"><span class="editorial-copyright">© 2026 Higor Selvino <button class="sunflower-trigger" type="button" data-sunflower-trigger aria-label="A small surprise" title="A small blue dot"></button></span><div class="footer-links"><a href="mailto:higorselvino0@gmail.com">Email</a><a href="https://www.linkedin.com/in/higor-selvino-de-oliveira/" target="_blank" rel="noreferrer">LinkedIn</a><a href="cookie-policy.html">Cookie Policy</a><a href="privacy.html">Privacy Statement</a><a href="terms-and-conditions.html">Terms and Conditions</a></div></div>
   </footer>
   <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded image"><button class="lightbox-close" type="button">Close</button><img src="" alt=""></div>
+  <script src="assets/story.js?v=20.0" defer></script>
   <script src="assets/site.js?v=19.6" defer></script>
 </body>
 </html>

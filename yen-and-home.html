@@ -8,6 +8,7 @@
   <title>Yen &amp; Home · Product Design Case Study by Higor Selvino</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="stylesheet" href="assets/styles.css?v=19.7">
+  <link rel="stylesheet" href="assets/story.css?v=20.0">
 </head>
 <body style="--project-accent:#db4c3e">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -98,6 +99,16 @@
           <li><b>04</b><span>Adjust quantity and frequency</span></li>
           <li><b>05</b><span>Review the monthly estimate</span></li>
         </ol>
+        <div class="planning-demo" data-planning-demo>
+          <div class="planning-demo-head"><span class="story-kicker">Try the calculation</span><h3>A purchase becomes a monthly plan.</h3><p>Change the number of packages and purchases per month. Each line shows exactly how the estimate responds.</p></div>
+          <div class="planning-demo-body"><div class="planning-demo-items">
+            <div class="planning-demo-row" data-unit-price="1780"><div><strong>Rice</strong><small>2 kg package · ¥1,780 per package</small></div><label for="plan-quantity-0">Packages<input id="plan-quantity-0" type="number" min="0" max="20" step="1" value="1" inputmode="numeric" aria-label="Rice packages per purchase"></label><label for="plan-frequency-0">Per month<select id="plan-frequency-0" aria-label="Rice purchases per month"><option value="1">1 purchase</option><option value="2">2 purchases</option><option value="4">4 purchases</option><option value="8">8 purchases</option></select></label><small class="planning-demo-formula" data-row-total style="grid-column:1/-1"></small></div>
+<div class="planning-demo-row" data-unit-price="236"><div><strong>Milk</strong><small>1 litre carton · ¥236 per package</small></div><label for="plan-quantity-1">Packages<input id="plan-quantity-1" type="number" min="0" max="20" step="1" value="1" inputmode="numeric" aria-label="Milk packages per purchase"></label><label for="plan-frequency-1">Per month<select id="plan-frequency-1" aria-label="Milk purchases per month"><option value="1">1 purchase</option><option value="2">2 purchases</option><option value="4">4 purchases</option><option value="8">8 purchases</option></select></label><small class="planning-demo-formula" data-row-total style="grid-column:1/-1"></small></div>
+<div class="planning-demo-row" data-unit-price="298"><div><strong>Eggs</strong><small>10 egg pack · ¥298 per package</small></div><label for="plan-quantity-2">Packages<input id="plan-quantity-2" type="number" min="0" max="20" step="1" value="1" inputmode="numeric" aria-label="Eggs packages per purchase"></label><label for="plan-frequency-2">Per month<select id="plan-frequency-2" aria-label="Eggs purchases per month"><option value="1">1 purchase</option><option value="2">2 purchases</option><option value="4">4 purchases</option><option value="8">8 purchases</option></select></label><small class="planning-demo-formula" data-row-total style="grid-column:1/-1"></small></div>
+          </div><div class="planning-demo-summary"><label for="plan-budget">Example monthly budget<input id="plan-budget" data-plan-budget type="number" min="1" max="1000000" value="20000" step="100" inputmode="numeric"></label><span>Monthly estimate</span><output data-plan-total aria-live="polite" aria-label="Monthly estimate">¥2,314</output><progress max="100" value="12" aria-label="Example budget used"></progress><p data-plan-remaining aria-live="polite"></p><button type="button" data-plan-reset>Reset example</button></div></div>
+          <p class="planning-demo-note">Interactive calculation example using values shown in the project. These are sample prices, not a live grocery quote. The full prototype includes the broader catalog and shopping flow.</p>
+        </div>
+
         <div class="yh-flow-showcase reveal">
           <figure class="yh-illustration" data-zoom><img src="assets/images/yen-home/yen-home-hero-illustration.webp" alt="Printed-style illustration of a couple unpacking groceries in a Japanese home" loading="lazy" decoding="async"></figure>
           <div><span class="yh-tag">Design direction</span><h3>A practical tool with the warmth of a printed household guide.</h3><p>The illustration gives the abstract topic of cost planning a human context. Paper textures, offset color and direct typography make the product feel accessible without hiding the functional structure underneath.</p></div>
@@ -163,6 +174,7 @@
     <div class="shell footer-inner"><span class="editorial-copyright">© 2026 Higor Selvino <button class="sunflower-trigger" type="button" data-sunflower-trigger aria-label="A small surprise" title="A small blue dot"></button></span><div class="footer-links"><a href="mailto:higorselvino0@gmail.com">Email</a><a href="https://www.linkedin.com/in/higor-selvino-de-oliveira/" target="_blank" rel="noreferrer">LinkedIn</a><a href="cookie-policy.html">Cookie Policy</a><a href="privacy.html">Privacy Statement</a><a href="terms-and-conditions.html">Terms and Conditions</a></div></div>
   </footer>
   <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded image"><button class="lightbox-close" type="button">Close</button><img src="" alt=""></div>
+  <script src="assets/story.js?v=20.0" defer></script>
   <script src="assets/site.js?v=19.6" defer></script>
 </body>
 </html>
