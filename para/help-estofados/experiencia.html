@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#09538e">
+<title>Help Estofados | O cuidado começa na trama</title>
+<meta name="description" content="Conceito independente de uma experiência para a Help Estofados, com serviços e pedido guiado.">
+<link rel="icon" href="assets/logo.webp"><link rel="stylesheet" href="help.css">
+<link rel="preload" as="image" href="assets/cena-abertura.webp" imagesrcset="assets/cena-abertura-small.webp 960w, assets/cena-abertura.webp 1920w" imagesizes="100vw">
+<script defer src="assets/gsap.min.js"></script><script defer src="assets/ScrollTrigger.min.js"></script><script defer src="experience.js"></script>
+</head>
+<body class="experience">
+<a class="skip" href="#pedido">Ir para o pedido</a>
+<div class="preview-note"><span>Prévia de design independente. Imagens conceituais.</span><a href="./">Ver a proposta ↗</a></div>
+<header class="site-header"><a class="help-brand" href="#inicio" aria-label="Help Estofados, início"><img src="assets/logo.webp" width="44" height="44" alt=""><span>help<span>ESTOFADOS</span></span></a><nav aria-label="Menu principal"><a href="#servicos">Serviços</a><a href="#como">Como funciona</a><a class="nav-action" href="#pedido">Preparar pedido <span aria-hidden="true">↗</span></a></nav></header>
+<main>
+<section class="hero scene" id="inicio" aria-labelledby="hero-title">
+<p class="hero-location">Higienização & impermeabilização<br>Caxias, MA e região</p>
+<h1 id="hero-title"><span>O cuidado</span><span>começa na trama.</span></h1>
+<div class="hero-orbit" aria-hidden="true"></div>
+<img class="hero-chair" src="assets/cena-abertura.webp" srcset="assets/cena-abertura-small.webp 960w, assets/cena-abertura.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Poltrona clara em estúdio azul, conceito visual para o cuidado com estofados">
+<div class="hero-bottom"><p>Para o que faz parte<br>da sua vida, todos os dias.</p><a href="#trama" class="explore">Entre na trama <span aria-hidden="true">↓</span></a><a class="pill light" href="#pedido">O que você quer cuidar? ↗</a></div>
+<span class="vertical-label" aria-hidden="true">CASA · CARRO · PROTEÇÃO</span>
+</section>
+<section id="trama" class="material-story" aria-label="Explore o cuidado com o tecido">
+<div class="material-stage">
+<div class="material-image" aria-hidden="true"><img src="assets/cena-abertura.webp" srcset="assets/cena-abertura-small.webp 960w, assets/cena-abertura.webp 1920w" sizes="100vw" width="1920" height="1080" alt=""></div>
+<canvas class="weave" aria-hidden="true"></canvas>
+
+<div class="story-shade" aria-hidden="true"></div>
+<div class="story-copy"><p class="scene-caption">Um olhar mais perto</p><h2>Não é só<br>um tecido.</h2><p>É onde a rotina acontece.<br>E cada material pede atenção.</p></div>
+<div class="story-copy story-copy-next"><p class="scene-caption">Um cuidado por vez</p><h2>O próximo passo<br>começa com você.</h2><p>Conte qual peça precisa de atenção.<br>A Help avalia o serviço com você.</p></div>
+<div class="story-controls"><span class="story-progress"><i></i></span><span class="story-status">Continue rolando para explorar</span><a href="#servicos">Pular experiência ↓</a><button class="motion-toggle" type="button" aria-pressed="false">Reduzir movimento</button></div>
+</div>
+</section>
+<section id="servicos" class="services section-pad" aria-labelledby="services-title">
+<div class="section-intro"><p>Qual espaço precisa de cuidado?</p><h2 id="services-title">A sua rotina<br>tem muitos lugares.</h2></div>
+<div class="service-tabs" role="tablist" aria-label="Tipos de serviço"><button id="tab-casa" role="tab" aria-selected="true" aria-controls="panel-casa" data-service="casa">Sua casa <span>↗</span></button><button id="tab-carro" role="tab" aria-selected="false" aria-controls="panel-carro" tabindex="-1" data-service="carro">Seu carro <span>↗</span></button><button id="tab-protecao" role="tab" aria-selected="false" aria-controls="panel-protecao" tabindex="-1" data-service="protecao">Mais proteção <span>↗</span></button></div>
+<div class="service-world" data-world="casa">
+<div class="service-art" aria-hidden="true"><div class="world-ring"></div><img class="world-home" src="assets/poltrona.webp" width="1280" height="1280" alt=""><img class="world-car" src="assets/carro.webp" width="1672" height="941" alt=""><div class="protection-lines"><span></span><span></span><span></span></div></div>
+<div id="panel-casa" role="tabpanel" aria-labelledby="tab-casa" class="service-panel"><p class="service-kind">Higienização residencial</p><h3>Onde você<br>se sente em casa.</h3><p>Sofás, poltronas, colchões, tapetes e carpetes. Comece pela peça e conte à Help o que precisa de atenção.</p><a class="text-action" href="#pedido" data-pick="Higienização residencial">Preparar pedido para casa ↗</a></div>
+<div id="panel-carro" role="tabpanel" aria-labelledby="tab-carro" class="service-panel" hidden><p class="service-kind">Interior automotivo</p><h3>Cuidado que<br>vai com você.</h3><p>Bancos, teto e laterais do veículo. Informe o modelo e quais áreas você gostaria de higienizar.</p><a class="text-action" href="#pedido" data-pick="Interior automotivo">Preparar pedido para o carro ↗</a></div>
+<div id="panel-protecao" role="tabpanel" aria-labelledby="tab-protecao" class="service-panel" hidden><p class="service-kind">Impermeabilização</p><h3>Vamos conversar<br>sobre proteção?</h3><p>A aplicação depende da peça e do material. Envie os detalhes para a Help verificar a indicação e as condições do serviço.</p><a class="text-action" href="#pedido" data-pick="Impermeabilização">Consultar impermeabilização ↗</a></div>
+</div>
+<p class="image-note">Cenas de direção de arte. Não representam serviços executados nem resultados garantidos.</p>
+</section>
+<section id="como" class="how section-pad"><div><p>Do interesse à conversa</p><h2>Menos dúvidas.<br>Mais contexto.</h2></div><ol class="how-list"><li><span>Conte o que precisa</span><p>Escolha o serviço, a peça e a quantidade.</p></li><li><span>Mostre os detalhes</span><p>Na conversa, fotos ajudam a Help a avaliar material e tamanho.</p></li><li><span>Combine com a Help</span><p>Valor, disponibilidade e atendimento são confirmados pela equipe.</p></li></ol></section>
+<section id="pedido" class="request section-pad" aria-labelledby="request-title"><div class="request-heading"><p>Seu pedido, organizado</p><h2 id="request-title">Vamos cuidar<br>do quê?</h2><p>Leva menos de um minuto. Você revisa o resumo antes de iniciar uma conversa.</p><div class="demo-callout"><strong>Você está testando uma prévia.</strong><p>Este formulário não envia nada para a empresa. No site aprovado, o resumo segue para o WhatsApp da Help.</p></div></div>
+<form id="quote-form"><label>Qual serviço?<select name="servico" required><option value="">Selecione o serviço</option><option>Higienização residencial</option><option>Interior automotivo</option><option>Impermeabilização</option><option>Preciso de orientação</option></select></label><div class="field-row"><label>Peça ou veículo<input name="peca" required maxlength="80" placeholder="Ex.: sofá de 3 lugares" autocomplete="off"></label><label>Quantidade<input name="quantidade" required type="number" min="1" max="30" value="1" inputmode="numeric"></label></div><label>Tamanho ou detalhes <span>(opcional)</span><input name="tamanho" maxlength="120" placeholder="Ex.: retrátil, tecido claro"></label><div class="field-row"><label>Cidade<input name="cidade" required value="Caxias, MA" maxlength="60" autocomplete="address-level2"></label><label>Bairro<input name="bairro" required maxlength="60" autocomplete="address-level3" placeholder="Seu bairro"></label></div><label>O que merece atenção? <span>(opcional)</span><textarea name="observacao" rows="3" maxlength="300" placeholder="Conte o que você gostaria de avaliar."></textarea></label><button class="submit-btn" type="submit">Ver meu resumo <span>↗</span></button><p class="form-footnote">Sem cadastro. Nenhum dado é salvo por esta prévia.</p></form>
+</section>
+<section class="closing"><p>Help Estofados</p><h2>O cuidado está<br>nos detalhes.</h2><a href="#inicio">Voltar ao início ↑</a></section>
+</main><footer class="site-footer"><p>Conceito independente por <a href="https://www.higorselvino.art/" target="_blank" rel="noopener">Higor Selvino ↗</a></p><a href="./">Condições da proposta</a><p>Caxias, MA · Atendimento sujeito a consulta.</p></footer>
+<dialog id="summary-dialog" aria-labelledby="summary-title"><button class="dialog-close" type="button" aria-label="Fechar resumo">×</button><p class="scene-caption">Prévia do pedido</p><h2 id="summary-title">Tudo em<br>um só resumo.</h2><pre id="quote-summary"></pre><p>No site final, você confere o texto e envia pelo WhatsApp. Fotos podem ser anexadas na própria conversa.</p><button class="pill dark copy-summary" type="button">Copiar resumo</button><p role="status" id="copy-status"></p></dialog>
+<noscript><style>.material-story{display:none}.service-tabs{display:none}.service-panel[hidden]{display:block}.service-world{display:block}.service-panel{padding:1.5rem}.hero-chair{opacity:1}</style><p class="no-js">A animação e a demonstração do pedido precisam de JavaScript. Esta é uma proposta independente. <a href="./">Consulte a apresentação e o escopo.</a></p></noscript>
+</body></html>
