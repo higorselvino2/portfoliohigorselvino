@@ -82,7 +82,9 @@
     actions.hidden = false;
     status.textContent = '';
     preview.focus({ preventScroll: true });
-    preview.scrollIntoView({ behavior: reduced.matches || event.submitter?.matches(':focus-visible') ? 'instant' : 'smooth', block: 'start' });
+    const keyboard = Boolean(event.submitter?.matches(':focus-visible'));
+    if (window.fietzNavigate) window.fietzNavigate(preview, { keyboard });
+    else preview.scrollIntoView({ behavior: reduced.matches || keyboard ? 'instant' : 'smooth', block: 'start' });
   });
   $('#copy-message').addEventListener('click', async () => {
     try {

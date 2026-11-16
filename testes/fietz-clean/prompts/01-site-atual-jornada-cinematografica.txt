@@ -1,0 +1,40 @@
+Transforme o SITE ATUAL deste projeto em uma landing page cinematográfica original, com efeito de rolagem 3D e qualidade de direção de arte, composição, tipografia e interação de um site de referência. Trabalhe diretamente nos arquivos do projeto atual. Não troque a empresa por uma marca de exemplo e não entregue apenas um plano.
+
+CONTEXTO E PRESERVAÇÃO
+Antes de editar, analise o projeto inteiro, as páginas, os recursos e as informações disponíveis. Identifique a marca, seu público, os serviços reais e a principal conversão. Crie um backup datado e informe onde ficou.
+Preserve o conteúdo factual das páginas de início, serviços, sobre e contato: história, pessoas, serviços, depoimentos, prêmios, perguntas frequentes, SEO local, redes sociais e links de contato que realmente existam. Não invente informações para preencher uma seção. Preserve integrações e formulários úteis.
+Reúna a experiência principal em uma index.html contínua, com CSS, JavaScript e arquivos de mídia organizados. Troque a navegação entre páginas institucionais por âncoras quando fizer sentido. Preserve páginas legais e os destinos externos necessários. Não altere outros sites do projeto.
+
+DIREÇÃO CRIATIVA ADAPTADA À MARCA
+Crie a jornada a partir do negócio atual e de seus serviços reais. Escolha um ambiente, um objeto central e ações que expliquem o que a empresa faz. Não reutilize cenas de reparos, fotografia, câmeras, ferramentas ou pessoas de outro projeto quando não pertencerem ao negócio atual.
+Mantenha uma identidade reconhecível. Adapte a linguagem cinematográfica aos materiais, às cores, ao público e à personalidade da marca. Use fotografia publicitária fotorrealista, iluminação motivada, câmera estável, profundidade de campo e detalhes físicos plausíveis. Um clima dramático não pode tornar uma empresa acolhedora em uma cena ameaçadora.
+
+MÍDIA, EXCLUSIVAMENTE PELO HIGGSFIELD MCP
+Gere os novos visuais no Higgsfield MCP. Consulte o catálogo disponível na conta e as configurações exatas dos modelos. Priorize a melhor qualidade cinematográfica disponível, preferencialmente Cinema Studio 3.0 em 4K quando esse recurso estiver acessível e autorizado. Não afirme que usou um modelo ou resolução diferente dos retornados pelo serviço.
+Respeite o orçamento autorizado. Verifique custo e franquias antes de gerar. Use a franquia gratuita quando já autorizada e compatível. Se a configuração desejada exigir gasto não autorizado, apresente o custo e peça somente essa decisão, continuando o trabalho independente.
+Crie primeiro UMA imagem principal que estabeleça o ambiente, o objeto central, os materiais, as cores e a iluminação. Use essa imagem como referência visual das demais gerações. Analise o resultado antes de animar.
+Planeje uma sequência curta de clipes: abertura, cenas dos serviços que realmente existem e encerramento. Não crie um clipe para um serviço ausente. Cada clipe deve ter 5 a 10 segundos, 16:9 e nenhum áudio. Use o último quadro de um clipe como início do próximo sempre que o modelo aceitar, mantendo continuidade física e artística. Quando essa continuidade não puder ser preservada, não esconda o problema com uma transição ruim: corrija ou use uma passagem deliberada.
+As ações devem ser plausíveis e apresentar o serviço de forma compreensível. Evite transformações mágicas, resultados garantidos, peças que flutuam sem intenção, arquitetura que muda, mãos deformadas, dedos extras, água irreal e procedimentos impossíveis ou inseguros.
+Não coloque texto, números de modelo, preços, logotipos ou marcas d'água dentro das imagens ou vídeos. Títulos, serviços e chamadas devem ser HTML real.
+
+PESSOAS E PROVA REAL
+Use referências de identidade somente quando fotografias autorizadas da pessoa tiverem sido explicitamente fornecidas para esse fim. Inspecione as referências e preserve a aparência. Não transforme uma pessoa fictícia no proprietário ou funcionário real da empresa. Sem referências autorizadas, trabalhe com ambientes, objetos, detalhes ou mãos anônimas, sem atribuir identidade.
+Não envie fotografias de clientes encontradas no site ao gerador sem autorização específica. Não associe personagens fictícios a depoimentos reais. Preserve fotos reais de trabalhos quando autorizadas e identifique as imagens de conceito geradas por IA. Nunca apresente uma simulação como resultado de um serviço realizado.
+
+IMPLEMENTAÇÃO DA ROLAGEM 3D
+Converta os clipes aprovados em uma sequência otimizada de quadros e renderize em canvas. Rolar para baixo avança a jornada; rolar para cima retorna aos mesmos quadros. Não substitua essa experiência por um vídeo em autoplay que ignore o scroll.
+Use GSAP com ScrollTrigger para fixar a cena, controlar os quadros e sincronizar textos HTML. Use Lenis sincronizado ao mesmo ciclo do GSAP para a rolagem suave. Evite dois ciclos de animação concorrentes, scroll duplo, saltos de pinagem e âncoras que não chegam ao destino.
+Crie transições entre as cenas que façam sentido para o ambiente e o serviço. Os textos devem mudar no momento correto e sair antes de competir com o texto seguinte. Mantenha a conversão principal acessível sem obrigar a pessoa a assistir à jornada inteira.
+Depois da jornada, apresente serviços, história, atendimento, depoimentos, FAQ e contato conforme o conteúdo real disponível. Omita seções sem dados. Preserve o funcionamento do formulário e a revisão dos dados antes de abrir o contato externo.
+
+RESPONSIVIDADE, ACESSIBILIDADE E DESEMPENHO
+Adapte a composição a celular, tablet, notebook pequeno e monitor grande, inclusive janelas baixas e redimensionamento. Proteja margens, foco do teclado, contraste e áreas de toque. Nenhum título pode vazar nem ficar atrás da navegação.
+Não carregue a sequência inteira antes de mostrar o site. Mostre um pôster imediato, carregue um conjunto inicial e avance por blocos. Limite a resolução e o consumo de memória do canvas. Se um quadro ainda não estiver pronto, mantenha o último quadro válido.
+Crie uma versão mais leve para celular e conexão limitada, e uma experiência estática completa para prefers-reduced-motion, falha de JavaScript, erro de mídia ou ausência de canvas. Nada pode ficar invisível esperando animação. O visitante deve conseguir desativar o movimento.
+Não acrescente efeitos por quantidade. Cada transição deve explicar uma mudança, conduzir a atenção ou demonstrar o serviço.
+
+VALIDAÇÃO E ENTREGA
+Execute em localhost e abra um navegador real. Teste scroll para frente e para trás, início e fim de cada cena, continuidade, textos, canvas, Lenis, ScrollTrigger, âncoras, teclado, menu, formulário, WhatsApp e outros contatos. Não envie mensagens reais durante os testes.
+Teste pelo menos 320, 390, 768, 1024, 1440 e 1920 px, uma janela baixa, redimensionamento e movimento reduzido. Verifique imagens, fontes, desempenho, console, ausência de rolagem lateral, quadros vazios e textos sobrepostos. Corrija os problemas antes de concluir.
+Entregue o site funcionando, capturas reais de desktop e celular, o endereço de teste, o caminho do backup e um resumo do que foi verificado. Publique somente no destino autorizado do projeto atual. Informe com clareza qualquer limite de ferramenta, geração ou teste que permaneça. Nunca afirme que o site ganhou um prêmio.
+Nunca use o caractere de travessão longo no conteúdo do site.

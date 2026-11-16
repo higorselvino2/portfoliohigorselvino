@@ -1,0 +1,9 @@
+{
+  "source": "One Higgsfield Seedance 2.5 video, generated from the shared reference image",
+  "duration": 10.041667,
+  "resolution": "1280x720",
+  "audio": false,
+  "desktop": { "count": 120, "pattern": "frames/desktop/frame-####.webp" },
+  "mobile": { "count": 48, "pattern": "frames/mobile/frame-####.webp" },
+  "disclosure": "Imagens conceituais geradas por IA, sem representar serviços realizados."
+}

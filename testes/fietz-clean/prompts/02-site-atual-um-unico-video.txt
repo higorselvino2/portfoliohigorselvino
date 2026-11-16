@@ -1,0 +1,44 @@
+Redesenhe e implemente o SITE ATUAL deste projeto como uma landing page cinematográfica original, com efeito de rolagem 3D e direção de arte de alto nível. Descubra a marca e o negócio a partir dos arquivos e do site existente. Não use o nome, os serviços ou as pessoas de outro projeto. Trabalhe no site atual até ele funcionar e ser revisado visualmente.
+
+ANTES DE CONSTRUIR
+Analise o projeto, suas páginas, arquivos de mídia, formulários e links. Crie um backup datado antes de editar. Preserve todas as informações reais relevantes: serviços, produtos, localização, história, equipe, depoimentos, prêmios, redes sociais, SEO e contato, desde que existam. Não invente métricas, garantias, clientes, preços, histórias ou disponibilidade.
+Organize a experiência principal em uma index.html contínua, mantendo os arquivos de estilos, scripts e mídia separados quando necessário. Use âncoras internas para as seções; preserve páginas legais e destinos externos. Não altere outros sites ou projetos.
+
+CONCEITO VISUAL ESPECÍFICO
+Escolha um objeto ou uma situação que represente o mecanismo real do negócio atual. O objeto serve para apresentar o serviço, não para transformar a empresa em uma loja de equipamentos. Não inclua preço de produto, especificações ou botão de compra se a empresa não vende aquilo.
+A jornada precisa contar algo compreensível: apresentar o objeto ou o material, revelar o cuidado ou processo que a empresa oferece e chegar ao ambiente ou resultado de uso. Adapte ao negócio. Não reutilize automaticamente uma câmera desmontando, uma caixa de ferramentas ou cenas de casamento.
+Escolha composição, tipografia, cores e iluminação que façam sentido para a marca. Use materiais realistas, câmera lenta e estável, luz motivada, sombras naturais, profundidade de campo e espaço para títulos em HTML. A experiência deve ser editorial, legível, responsiva e voltada à contratação ou ação real do negócio.
+
+GERAÇÃO EXCLUSIVAMENTE NO HIGGSFIELD MCP
+Consulte os modelos, formatos e resoluções disponíveis na conta. Para imagens, use o modelo fotorrealista adequado. Para o vídeo, prefira Cinema Studio 3.0 em 4K se estiver acessível e dentro do orçamento autorizado; caso contrário, use a melhor opção efetivamente disponível, informando o modelo e a resolução reais. Não invente recursos da ferramenta.
+Verifique custos e franquias antes de gerar. Respeite o limite autorizado. Uma assinatura existente não é autorização automática para qualquer gasto adicional. Se houver custo não autorizado, apresente a configuração e o valor antes da geração, continuando o restante do trabalho.
+Gere primeiro UMA imagem hero que defina o objeto central, o ambiente, os materiais, as cores e a iluminação. Analise a imagem e use-a como referência do vídeo e das imagens seguintes.
+
+CRÍTICO: GERE SOMENTE UM VÍDEO PARA TODO O SITE
+O único vídeo deve ter 16:9, entre 5 e 10 segundos e nenhum áudio. Anime a mesma imagem principal. Crie uma trajetória suave que revele o objeto e seu processo de forma fisicamente plausível, terminando num enquadramento estável que permita a passagem para o conteúdo da página.
+Uma vista explodida só faz sentido quando o objeto e o negócio justificarem esse recurso; nesse caso, as peças devem manter identidade, ordem e geometria, sem quebra ou explosão destrutiva. Não force uma vista explodida em serviços que precisam de uma demonstração de cuidado, espaço ou transformação realista.
+Não gere vídeos adicionais para serviços, seções, categorias, galerias, mobile ou encerramento. Se for preciso uma versão leve, derive-a do mesmo vídeo aprovado, sem uma nova geração.
+Após o vídeo principal, crie toda a experiência com imagens estáticas, HTML, CSS, canvas, GSAP, ScrollTrigger, Lenis, máscaras, parallax e zoom com propósito.
+
+IMAGENS ESTÁTICAS
+Gere de 6 a 8 imagens estáticas que completem o conteúdo real do negócio: ambientes, materiais, detalhes e situações de uso relevantes. Adapte a quantidade ao que sustenta uma boa página, sem criar serviços inexistentes. Use a hero como referência para manter continuidade de materiais, ambiente e luz.
+Não coloque textos, nomes, logotipos, números de modelo, preços, marcas d'água ou elementos de interface dentro das imagens. Todo texto deve ser HTML real.
+Não envie fotografias de clientes encontradas no site ao Higgsfield sem autorização específica. Não associe pessoas fictícias a depoimentos, à equipe ou à história real. Referências de identidade só podem ser usadas quando explicitamente fornecidas e autorizadas; sem elas, não invente um retrato do proprietário.
+Identifique de forma discreta e legível as imagens conceituais geradas por IA. Elas não podem parecer prova de trabalho executado. Mantenha a prova real autorizada em uma seção separada, preservando seu contexto e sem fabricar antes e depois.
+
+CANVAS E ROLAGEM REVERSÍVEL
+Converta o vídeo aprovado em uma sequência otimizada de quadros. Renderize no canvas; o scroll avança e retorna os quadros de forma reversível. A cena deve ser uma experiência controlada pela rolagem, e não um vídeo que começa a tocar sozinho.
+Use GSAP com ScrollTrigger para pinagem, progresso, quadros e textos HTML sobrepostos. Integre Lenis com ScrollTrigger.update e o ticker do GSAP, evitando dois ciclos concorrentes. As âncoras, o menu e o acesso à conversão precisam funcionar durante e depois da pinagem.
+Depois da transição do vídeo, apresente os serviços ou portfólio, o processo de atendimento, a história e as demais informações existentes. Use imagens estáticas com recortes, máscaras, zoom e parallax discretos, sem repetir o mesmo efeito em todas as seções. A interface precisa revelar a marca, não exibir uma coleção de efeitos.
+Preserve a conversão principal, os contatos reais e os formulários úteis. Dê acesso direto ao pedido para quem não quiser percorrer a narrativa inteira. Antes de abrir WhatsApp ou outro contato externo, permita revisar os dados. Não envie nada automaticamente.
+
+DESEMPENHO E ACESSIBILIDADE
+Pôster imediato, carregamento progressivo dos quadros, prioridades e descarte ou limite de memória. Não bloqueie o conteúdo esperando o download de todas as imagens. Nunca desenhe um quadro vazio: mantenha o último quadro válido ou o pôster.
+Crie uma versão mais leve para celulares a partir do mesmo vídeo e uma versão estática completa para movimento reduzido, rede limitada, falha de canvas, mídia indisponível ou JavaScript desativado. O usuário deve poder desligar a animação. Nada pode desaparecer se uma biblioteca falhar.
+Adapte a composição para qualquer tamanho de janela, de celular pequeno a monitor grande, inclusive notebook baixo. Preserve margens, contraste, leitura, foco do teclado, navegação e áreas de toque. Evite consumo permanente de processamento quando a cena estiver fora da tela.
+
+VERIFICAÇÃO OBRIGATÓRIA
+Execute em localhost, abra em navegador real e registre capturas reais de desktop e celular. Teste a rolagem nos dois sentidos, começo e fim da sequência, textos, transições, pinagem, resize, canvas, Lenis, ScrollTrigger, menus, âncoras, formulário e contatos. Não envie mensagens à empresa durante a revisão.
+Teste pelo menos 320, 390, 768, 1024, 1440 e 1920 px, uma janela baixa e prefers-reduced-motion. Verifique console, imagens, fontes, rolagem lateral, quadros vazios, títulos cortados, sobreposição, desempenho e acesso direto às seções. Corrija antes de concluir.
+Entregue o site funcionando, endereço de teste, capturas reais, backup, resumo da validação e os arquivos das mídias. Publique no destino autorizado do site atual. Não diga que algo foi testado, gerado em 4K ou publicado se isso não ocorreu. Não prometa um prêmio.
+Nunca use o caractere de travessão longo no conteúdo do site.

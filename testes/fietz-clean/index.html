@@ -5,24 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="page-type" content="service"><meta name="site-kind" content="other">
-  <meta name="theme-color" content="#f5f4ee">
+  <meta name="theme-color" content="#111815">
   <title>Fietz Clean | Higienização de sofás e colchões</title>
   <meta name="description" content="Conheça uma proposta de site para a Fietz Clean. Escolha seu estofado e prepare um pedido para conversar com a equipe pelo WhatsApp.">
   <meta property="og:title" content="Fietz Clean | Uma nova experiência de cuidado">
   <meta property="og:description" content="Uma prévia criada por Higor Selvino. Conheça os cuidados e experimente o pedido de orçamento.">
-  <meta property="og:type" content="website"><meta property="og:image" content="https://www.higorselvino.art/testes/fietz-clean/assets/sala.jpg">
+  <meta property="og:type" content="website"><meta property="og:image" content="https://www.higorselvino.art/testes/fietz-clean/assets/cinema/01-hero.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/serif-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="assets/motion/motion.css">
-  <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-  <script type="module" src="assets/motion/motion.js"></script>
-  <script type="module" src="assets/moments/moments.js"></script>
-  <script defer src="site.js"></script>
+  <link rel="stylesheet" href="assets/vendor/lenis.css">
+  <link rel="stylesheet" href="cinema.css?v=20261116-4">
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="site.js?v=20261116-4"></script>
+  <script defer src="cinema.js?v=20261116-4"></script>
 </head>
 <body>
-<!-- service / photo / client teal / source-serif / nav-centre / arrow / picture-develops -->
+<!-- Independent cinematic proposal. Generated scenes are conceptual; real evidence remains separate. -->
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="nav">
   <div class="wrap nav__bar">
@@ -30,35 +32,64 @@
       <span class="brand-symbol" aria-hidden="true"><img src="assets/cover-original.webp" alt="" width="768" height="960"></span>
       <span>Fietz<small>Deep Clean</small></span>
     </a>
-    <nav class="nav__links" id="menu" aria-label="Principal"><a href="#cuidados">Cuidados</a><a href="#resultado">Resultado</a><a href="#duvidas">Dúvidas</a></nav>
+    <nav class="nav__links" id="menu" aria-label="Principal"><a href="#cuidados">Cuidados</a><a href="#processo">Atendimento</a><a href="#resultado">Resultado real</a><a href="#duvidas">Dúvidas</a><a class="menu-quote" href="#pedido">Preparar orçamento</a></nav>
     <a class="btn btn--primary nav-cta" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
     <button type="button" class="menu-toggle" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
   </div>
 </header>
 <main id="conteudo">
-  <section class="hero hero--photo" data-enter aria-labelledby="hero-title">
-    <img class="hero__bg" data-enter-media src="assets/sala.jpg" alt="Sala com sofá de tecido e luz natural" width="2000" height="1286" data-source="stand-in" data-subject="living room" fetchpriority="high">
-    <div class="wrap hero-wrap">
-      <div class="hero__text">
-        <h1 id="hero-title">Higienização<br> de estofados.</h1>
-        <p class="hero__lead">Seu sofá e seu colchão merecem cuidado. Conte o que precisa de atenção e converse com a Fietz Clean.</p>
-        <div class="btn-row"><a class="btn btn--primary" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
-        <p class="hero-location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg>Porto Alegre e região<span>Consulte seu bairro com a equipe.</span></p>
+  <section class="cinema-story" id="experiencia" aria-labelledby="hero-title">
+    <div class="cinema-stage">
+      <picture class="cinema-poster"><source media="(max-width:700px)" srcset="assets/cinema/01-hero-small.webp"><img src="assets/cinema/01-hero.webp" alt="Cena conceitual de um bico de extração sobre o tecido de um sofá, em luz quente" width="1600" height="900" fetchpriority="high"></picture>
+      <canvas id="cinema-canvas" aria-hidden="true"></canvas>
+      <div class="cinema-shade" aria-hidden="true"></div>
+      <div class="wrap cinema-layout">
+        <div class="story-panel is-current" data-chapter="0">
+          <h1 id="hero-title">Higienização<br> de estofados.</h1>
+          <p>Seu sofá e seu colchão merecem cuidado. Conte o que precisa de atenção e converse com a Fietz Clean.</p>
+          <a class="btn btn--primary" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <span class="cinema-location">Porto Alegre e região. Consulte seu bairro.</span>
+        </div>
+        <div class="story-panel" data-chapter="1" aria-hidden="true" inert>
+          <h2>O cuidado<br> está nos detalhes.</h2>
+          <p>Tecido, tamanho e estado de conservação fazem parte da avaliação de cada peça.</p>
+          <a class="story-text-link" href="#cuidados">Ver os cuidados <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+        <div class="story-panel" data-chapter="2" aria-hidden="true" inert>
+          <h2>Seu espaço.<br> Seu próximo cuidado.</h2>
+          <p>Escolha a peça e prepare as informações. A equipe confirma o orçamento e a disponibilidade.</p>
+          <a class="btn btn--primary" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="wrap cinema-bottom">
+        <div class="cinema-instructions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg><span id="scroll-hint">Role para explorar</span><a href="#cuidados">Ir direto aos cuidados</a></div>
+        <div class="cinema-controls"><button type="button" id="motion-toggle" aria-pressed="false">Ativar movimento</button><span class="concept-label">Cena conceitual gerada por IA</span></div>
+        <div class="story-progress" aria-hidden="true"><span></span></div>
       </div>
     </div>
+    <noscript><p class="wrap no-script-note">A versão estática está disponível. Os cuidados, as informações e os contatos continuam abaixo.</p></noscript>
   </section>
   <section class="section services" id="cuidados" aria-labelledby="services-title">
     <div class="wrap">
       <div class="section-head"><h2 id="services-title">Um cuidado para<br> cada estofado.</h2><p>Comece pela peça. Tamanho, tecido e estado de conservação ajudam a equipe a avaliar o serviço.</p></div>
       <div class="service-grid">
-        <a class="service-option m-zoom" href="#pedido" data-pick="Sofá"><div class="service-photo" data-moment="picture-develops" data-moment-opts='{"look":"film"}'><img src="assets/sofa.jpg" alt="Sofá verde de três lugares em uma sala iluminada" width="1200" height="675" loading="lazy" data-source="stand-in" data-subject="sofa"></div><div class="service-bottom"><h3>Cuidar do sofá</h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></div><p>Para os lugares que fazem parte da sua rotina.</p></a>
-        <a class="service-option m-zoom" href="#pedido" data-pick="Colchão"><div class="service-photo"><img src="assets/quarto.jpg" alt="Cama de casal com estofado e roupa de cama clara" width="1200" height="792" loading="lazy" data-source="stand-in" data-subject="bed"></div><div class="service-bottom"><h3>Cuidar do colchão</h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></div><p>Informe o tamanho e o que precisa de atenção.</p></a>
+        <a class="service-option" href="#pedido" data-pick="Sofá"><div class="service-photo" data-parallax><img src="assets/cinema/02-sofa.webp" srcset="assets/cinema/02-sofa-small.webp 800w, assets/cinema/02-sofa.webp 1600w" sizes="(max-width:600px) calc(100vw - 48px),50vw" alt="Composição conceitual de um sofá claro na casa apresentada na experiência" width="1600" height="900" loading="lazy"></div><div class="service-bottom"><h3>Cuidar do sofá</h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></div><p>Para os lugares que fazem parte da sua rotina.</p></a>
+        <a class="service-option" href="#pedido" data-pick="Colchão"><div class="service-photo" data-parallax><img src="assets/cinema/03-colchao.webp" srcset="assets/cinema/03-colchao-small.webp 800w, assets/cinema/03-colchao.webp 1600w" sizes="(max-width:600px) calc(100vw - 48px),50vw" alt="Composição conceitual de um colchão em um quarto com luz quente" width="1600" height="900" loading="lazy"></div><div class="service-bottom"><h3>Cuidar do colchão</h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></div><p>Informe o tamanho e o que precisa de atenção.</p></a>
       </div>
     </div>
   </section>
+  <section class="material-section" aria-labelledby="material-title">
+    <div class="material-visual" data-mask-reveal><img src="assets/cinema/04-tecido.webp" alt="Imagem conceitual aproximada da trama de um tecido claro" width="1600" height="900" loading="lazy"></div>
+    <div class="wrap material-copy"><h2 id="material-title">Cada tecido.<br> Uma avaliação.</h2><p>Fotos, tamanho e localização ajudam a equipe a orientar seu pedido. O cuidado começa com essas informações.</p></div>
+  </section>
+  <section class="section process-section" id="processo" aria-labelledby="process-title"><div class="wrap">
+    <div class="section-head"><h2 id="process-title">Do pedido<br> à conversa.</h2><p>Prepare as informações uma vez. Revise sua mensagem e continue no WhatsApp, no seu tempo.</p></div>
+    <div class="process-editorial"><ol class="process-list"><li><h3>Escolha a peça</h3><p>Informe o tamanho, a quantidade e sua cidade e bairro.</p></li><li><h3>Mostre os detalhes</h3><p>Na conversa, envie uma foto da peça inteira e outra da área que precisa de atenção.</p></li><li><h3>Combine com a equipe</h3><p>Orçamento, cobertura, cuidados e disponibilidade são confirmados no atendimento.</p></li></ol><figure class="process-photo" data-parallax><img src="assets/cinema/05-extracao.webp" alt="Cena conceitual de um equipamento de extração em contato com um estofado" width="1600" height="900" loading="lazy"></figure></div>
+    <figure class="room-reveal" data-mask-reveal><img src="assets/cinema/06-ambiente.webp" alt="Visão conceitual da mesma sala, com sofá claro, madeira e luz de fim de tarde" width="1600" height="900" loading="lazy"><figcaption>Direção visual conceitual. Imagens geradas por IA.</figcaption></figure>
+  </div></section>
   <section class="section result" id="resultado" aria-labelledby="result-title">
     <div class="wrap">
-      <div class="section-head"><h2 id="result-title">O cuidado<br> fica à vista.</h2><div><p>Um antes e depois divulgado pela Fietz Clean. A avaliação de cada peça é individual.</p><a class="link" href="https://www.facebook.com/100084096336030/" target="_blank" rel="noopener noreferrer">Ver o perfil da Fietz <span aria-hidden="true">↗</span></a></div></div>
+      <div class="section-head"><h2 id="result-title">Um registro real<br> da Fietz Clean.</h2><div><p>Este antes e depois vem do material público da empresa e está separado das cenas conceituais. A avaliação de cada peça é individual.</p><a class="link" href="https://www.facebook.com/100084096336030/" target="_blank" rel="noopener noreferrer">Ver o perfil da Fietz <span aria-hidden="true">↗</span></a></div></div>
       <div class="result-pair"><figure><div class="archive-photo before"><img src="assets/cover-original.webp" alt="Sofá retrátil antes da higienização, do material público da Fietz" width="768" height="960" loading="lazy" data-source="client" data-subject="before"></div><figcaption>Antes</figcaption></figure><figure><div class="archive-photo after"><img src="assets/cover-original.webp" alt="O mesmo sofá depois da higienização, do material público da Fietz" width="768" height="960" loading="lazy" data-source="client" data-subject="after"></div><figcaption>Depois</figcaption></figure></div>
     </div>
   </section>
@@ -88,7 +119,8 @@
     </div>
   </section>
   <section class="section faq-section" id="duvidas" aria-labelledby="faq-title"><div class="wrap faq-grid"><h2 id="faq-title">Antes<br> da conversa.</h2><div class="answers"><article><h3>O valor aparece na hora?</h3><p>A equipe avalia tamanho, tecido, estado da peça e localização para informar o orçamento. Não há preço automático nesta página.</p></article><article><h3>Meu bairro é atendido?</h3><p>Informe cidade e bairro no pedido. A cobertura e as condições de deslocamento são confirmadas no atendimento.</p></article><article><h3>Como combinar a secagem?</h3><p>Pergunte à equipe sobre a previsão para seu tecido e ambiente. Confirme os cuidados necessários antes de agendar.</p></article></div></div></section>
+  <section class="closing-scene" aria-labelledby="closing-title"><img src="assets/cinema/07-almofada.webp" alt="Composição conceitual de uma almofada verde sobre o braço do sofá claro" width="1600" height="900" loading="lazy"><div class="wrap"><h2 id="closing-title">O próximo cuidado<br> começa com a sua peça.</h2><a class="btn btn--primary" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></section>
 </main>
-<footer class="closing"><div class="wrap"><div class="footer-main"><a class="brand" href="#conteudo"><span class="brand-symbol" aria-hidden="true"><img src="assets/cover-original.webp" alt="" width="768" height="960" loading="lazy"></span><span>Fietz<small>Deep Clean</small></span></a><p>O próximo cuidado<br> começa com a sua peça.</p><a class="btn btn--primary" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div><div class="footer-meta"><p>Prévia independente de <a href="../../index.html">Higor Selvino</a>, 2026. Não é o site oficial da empresa.</p><details><summary>Imagens e fontes</summary><p>Fotos de ambientes: <a href="https://www.pexels.com/photo/interior-design-of-a-house-1571460/" target="_blank" rel="noopener noreferrer">Viaceslav Kat</a>, <a href="https://www.pexels.com/photo/green-2-seat-sofa-1918291/" target="_blank" rel="noopener noreferrer">Chait Goli</a> e <a href="https://www.pexels.com/photo/90317/" target="_blank" rel="noopener noreferrer">Pexels 90317</a>. São referências visuais, não serviços realizados. Símbolo e antes/depois: material público da Fietz. Textos comerciais e uso oficial das imagens dependem de validação da empresa. Fontes Source Serif 4 e Libre Franklin sob licença OFL.</p></details></div></div></footer>
+<footer class="closing"><div class="wrap"><div class="footer-main"><a class="brand" href="#conteudo"><span class="brand-symbol" aria-hidden="true"><img src="assets/cover-original.webp" alt="" width="768" height="960" loading="lazy"></span><span>Fietz<small>Deep Clean</small></span></a><p>O próximo cuidado<br> começa com a sua peça.</p><a class="btn btn--primary" href="#pedido">Preparar orçamento <svg class="m-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div><div class="footer-meta"><p>Prévia independente de <a href="../../index.html">Higor Selvino</a>, 2026. Não é o site oficial da empresa.</p><details><summary>Imagens e fontes</summary><p>As cenas de ambientes, tecidos e equipamentos são conceitos gerados por IA no Higgsfield, com uma direção visual compartilhada. Não representam serviços executados pela empresa. O símbolo e o antes e depois são do material público da Fietz, apresentados separadamente. Textos comerciais e uso oficial das imagens dependem de validação da empresa. Fontes Source Serif 4 e Libre Franklin sob licença OFL.</p><a href="assets/cinema/film.mp4" download>Baixar o filme conceitual</a></details></div></div></footer>
 </body>
 </html>
